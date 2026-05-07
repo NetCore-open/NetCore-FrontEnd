@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "carlos@cleanwave.com",
+      "password": "admin123",
+      "firstName": "Carlos",
+      "lastName": "Admin",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "andrea@ejemplo.com",
+      "password": "123456",
+      "firstName": "Andrea",
+      "lastName": "García",
+      "role": "CLIENT",
+      "phone": "987654321"
+    }
+  ]
+}
