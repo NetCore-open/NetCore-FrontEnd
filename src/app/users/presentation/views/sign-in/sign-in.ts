@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UsersApiService } from '../../../infrastructure/users-api.service';
+
+// 1. Usamos el nombre de archivo 'users.store' que se ve en tu imagen
 import { UsersStore } from '../../../application/users.store';
+import { SignInCommand } from '../../../domain/model/sign-in.command';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,17 +14,14 @@ import { UsersStore } from '../../../application/users.store';
   styleUrl: './sign-in.css'
 })
 export class SignInComponent {
-  // 1. Inyecciones (Siempre arriba del todo)
   private fb = inject(FormBuilder);
-  private router = inject(Router);
-  private api = inject(UsersApiService);
+
+  // 2. Inyectamos el Store (Asegúrate de que la clase dentro del archivo se llame UsersStore)
   public store = inject(UsersStore);
 
-  // 2. Propiedades
   signInForm: FormGroup;
 
   constructor() {
-    // Inicializamos el formulario
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -32,22 +30,15 @@ export class SignInComponent {
 
   onSubmit() {
     if (this.signInForm.valid) {
-      const request = {
+      const command: SignInCommand = {
         email: this.signInForm.value.email,
         password: this.signInForm.value.password
       };
 
-      this.api.signIn(request).subscribe({
-        next: (response) => {
-          console.log('Login exitoso:', response);
-          // Navegamos al dashboard que configuramos en las rutas
-          this.router.navigate(['/dashboard']);
-        },
-        error: (err) => {
-          console.error('Error de login:', err);
-          // El store ya maneja el error, pero aquí puedes poner un alert si quieres
-        }
-      });
+      // 3. Llamamos al método del store
+      this.store.signIn(command);
+    } else {
+      this.signInForm.markAllAsTouched();
     }
   }
 }

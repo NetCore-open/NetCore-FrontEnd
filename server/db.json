@@ -17,5 +17,31 @@
       "role": "CLIENT",
       "phone": "987654321"
     }
+  ],
+  "laundries": [
+    {
+      "id": 1,
+      "name": "RapidWash Miraflores",
+      "address": "Av. Larco 123",
+      "rating": 4.8,
+      "imageUrl": "https://images.unsplash.com/photo-1545173153-5dd9215c6f9d?w=400",
+      "status": "OPEN"
+    },
+    {
+      "id": 2,
+      "name": "Clean & Go",
+      "address": "Calle Las Pizzas 456",
+      "rating": 4.5,
+      "imageUrl": "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=400",
+      "status": "OPEN"
+    },
+    {
+      "id": 3,
+      "name": "EcoLaundry",
+      "address": "Av. Arequipa 2200",
+      "rating": 4.9,
+      "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=400",
+      "status": "CLOSED"
+    }
   ]
 }

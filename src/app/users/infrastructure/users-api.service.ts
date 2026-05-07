@@ -16,8 +16,8 @@ export class UsersApiService {
   private http = inject(HttpClient);
   private store = inject(UsersStore);
 
-  // Antes: http://localhost:3000/users
-  private apiUrl = 'http://localhost:3000/api/users';
+// Volvemos a la ruta directa que entiende json-server v1
+  private apiUrl = 'http://localhost:3000/users';
 
   signIn(request: SignInRequest): Observable<SignInResponse> {
     this.store.setLoading(true);
