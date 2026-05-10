@@ -8,13 +8,13 @@ import { BillingApiService } from '../infrastructure/billing-api.service';
 export class BillingStore {
   private api = inject(BillingApiService);
 
-  // --- Estado Privado ---
+
   private readonly _plans = signal<Plan[]>([]);
   private readonly _subscriptions = signal<Subscription[]>([]);
   private readonly _loading = signal<boolean>(false);
   private readonly _error = signal<string | null>(null);
 
-  // --- Selectores Públicos ---
+
   readonly plans = this._plans.asReadonly();
   readonly subscriptions = this._subscriptions.asReadonly();
   readonly isLoading = this._loading.asReadonly();
@@ -80,7 +80,7 @@ export class BillingStore {
 
     this.api.createSubscription(body).subscribe({
       next: () => {
-        // Recargamos las suscripciones para reflejar la nueva
+
         this.loadSubscriptions(command.laundryId);
       },
       error: (err) => {

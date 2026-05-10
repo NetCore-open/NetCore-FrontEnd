@@ -13,7 +13,6 @@ export class SubscriptionsComponent implements OnInit {
   public store = inject(BillingStore);
 
   ngOnInit() {
-    // laundryId hardcodeado para mock, luego vendrá del usuario autenticado
     this.store.loadSubscriptions(1);
   }
 }

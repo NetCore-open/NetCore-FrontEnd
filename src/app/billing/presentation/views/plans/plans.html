@@ -1,5 +1,6 @@
 <div class="plans-container">
   <h2>Planes de Suscripción</h2>
+  <p class="subtitle">Elige el plan que mejor se adapte a tu lavandería</p>
 
   @if (store.isLoading()) {
     <p class="loading">Cargando planes...</p>
@@ -13,10 +14,12 @@
     @for (plan of store.plans(); track plan.id) {
       <div class="plan-card" [class.recommended]="plan.recommended">
         @if (plan.recommended) {
-          <span class="badge">+ Recomendado</span>
+          <span class="badge">⭐ Recomendado</span>
         }
         <h3>{{ plan.name }}</h3>
         <p class="price">S/. {{ plan.price }} <span>/ {{ plan.billingPeriod }}</span></p>
+
+        <div class="divider"></div>
 
         <div class="features-section">
           <h4>Para Lavanderías</h4>

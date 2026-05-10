@@ -11,7 +11,4 @@ export class Plan {
     public readonly clientFeatures: string[],
     public readonly recommended: boolean
   ) {}
-
-  // Aquí podríamos agregar métodos de dominio en el futuro
-  // ej: isFree(): boolean { return this.type === 'FREE'; }
 }

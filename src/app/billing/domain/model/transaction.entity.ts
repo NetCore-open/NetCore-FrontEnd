@@ -8,7 +8,4 @@ export class Transaction {
     public readonly date: string,
     public readonly status: TransactionStatus
   ) {}
-
-  // Aquí podríamos agregar métodos de dominio en el futuro
-  // ej: isCompleted(): boolean { return this.status === 'COMPLETED'; }
 }

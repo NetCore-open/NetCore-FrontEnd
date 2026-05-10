@@ -18,7 +18,6 @@ export class PlansComponent implements OnInit {
   }
 
   onSelectPlan(planId: number) {
-    // laundryId hardcodeado para mock, luego vendrá del usuario autenticado
     const command = new CreateSubscriptionCommand(planId, 1);
     this.store.subscribe(command);
   }

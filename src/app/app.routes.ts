@@ -28,7 +28,7 @@ export const routes: Routes = [
     canActivate: [authGuard(['ADMIN'])]
   },
 
-  // 💳 Rutas de Billing (solo ADMIN)
+
   {
     path: 'admin/plans',
     component: PlansComponent,

@@ -1,5 +1,6 @@
 <div class="subscriptions-container">
   <h2>Mis Suscripciones</h2>
+  <p class="subtitle">Gestiona las suscripciones de tu lavandería</p>
 
   @if (store.isLoading()) {
     <p class="loading">Cargando suscripciones...</p>
@@ -10,19 +11,25 @@
   }
 
   @if (store.subscriptions().length === 0 && !store.isLoading()) {
-    <p class="empty">No tienes suscripciones activas.</p>
+    <div class="empty">
+      <span class="empty-icon">📋</span>
+      <p>No tienes suscripciones activas.</p>
+    </div>
   }
 
   @for (sub of store.subscriptions(); track sub.id) {
     <div class="subscription-card">
       <div class="sub-header">
+        <span class="plan-name">Plan #{{ sub.planId }}</span>
         <span class="status" [class]="sub.status.toLowerCase()">
           {{ sub.status }}
         </span>
       </div>
-      <p><strong>Plan ID:</strong> {{ sub.planId }}</p>
-      <p><strong>Inicio:</strong> {{ sub.startDate }}</p>
-      <p><strong>Vencimiento:</strong> {{ sub.endDate }}</p>
+      <div class="sub-details">
+        <p><strong>Inicio:</strong> {{ sub.startDate }}</p>
+        <p><strong>Vencimiento:</strong> {{ sub.endDate }}</p>
+        <p><strong>Lavandería:</strong> #{{ sub.laundryId }}</p>
+      </div>
     </div>
   }
 </div>

@@ -9,7 +9,4 @@ export class Subscription {
     public readonly startDate: string,
     public readonly endDate: string
   ) {}
-
-  // Aquí podríamos agregar métodos de dominio en el futuro
-  // ej: isActive(): boolean { return this.status === 'ACTIVE'; }
 }

@@ -1,70 +1,115 @@
 .subscriptions-container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 40px auto;
   padding: 30px;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 h2 {
-  color: #2c3e50;
-  margin-bottom: 25px;
+  color: #1a2332;
+  margin-bottom: 8px;
   text-align: center;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 
 .subscription-card {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  margin-bottom: 15px;
+  padding: 22px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+  border: 1px solid #eef1f5;
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subscription-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .sub-header {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.plan-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2332;
 }
 
 .status {
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .status.active {
-  background-color: #e8f8f0;
-  color: #27ae60;
+  background-color: #dcfce7;
+  color: #16a34a;
 }
 
 .status.cancelled {
-  background-color: #fee;
-  color: #c0392b;
+  background-color: #fef2f2;
+  color: #dc2626;
 }
 
 .status.expired {
-  background-color: #fef5e7;
-  color: #f39c12;
+  background-color: #fef9c3;
+  color: #ca8a04;
 }
 
-.subscription-card p {
-  color: #34495e;
-  margin: 8px 0;
+.sub-details {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.sub-details p {
+  color: #64748b;
+  margin: 0;
+  font-size: 14px;
+}
+
+.sub-details strong {
+  color: #475569;
 }
 
 .empty {
   text-align: center;
-  color: #7f8c8d;
-  padding: 40px;
+  color: #94a3b8;
+  padding: 50px 20px;
+  font-size: 15px;
 }
 
-.loading, .error {
-  padding: 15px;
-  border-radius: 5px;
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.loading {
+  padding: 20px;
   text-align: center;
+  color: #64748b;
 }
 
 .error {
-  background-color: #fee;
-  color: #c0392b;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fef2f2;
+  color: #dc2626;
 }
