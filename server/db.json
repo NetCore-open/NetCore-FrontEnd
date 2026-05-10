@@ -43,5 +43,71 @@
       "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=400",
       "status": "CLOSED"
     }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "Plan Gratuito",
+      "price": 0,
+      "type": "FREE",
+      "billingPeriod": "siempre",
+      "laundryFeatures": ["Hasta 50 pedidos al mes", "Gestión básica de tickets"],
+      "clientFeatures": ["App móvil gratuita", "Historial de pedidos"],
+      "recommended": false
+    },
+    {
+      "id": 2,
+      "name": "Plan Premium",
+      "price": 89,
+      "type": "PREMIUM",
+      "billingPeriod": "mes",
+      "laundryFeatures": ["Pedidos ilimitados", "Rutas optimizadas con IA", "Notificaciones automáticas"],
+      "clientFeatures": ["Tracking en vivo", "Soporte prioritario"],
+      "recommended": true
+    },
+    {
+      "id": 3,
+      "name": "Plan Anual",
+      "price": 1040,
+      "type": "ANNUAL",
+      "billingPeriod": "año",
+      "laundryFeatures": ["Acceso completo por 12 meses", "Rutas optimizadas con IA", "Notificaciones automáticas"],
+      "clientFeatures": ["Tracking en vivo", "Soporte prioritario"],
+      "recommended": false
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": 1,
+      "planId": 2,
+      "laundryId": 1,
+      "status": "ACTIVE",
+      "startDate": "2026-04-01",
+      "endDate": "2026-05-01"
+    },
+    {
+      "id": 2,
+      "planId": 1,
+      "laundryId": 2,
+      "status": "EXPIRED",
+      "startDate": "2026-02-01",
+      "endDate": "2026-03-01"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "subscriptionId": 1,
+      "amount": 99.90,
+      "date": "2026-04-01",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 2,
+      "subscriptionId": 2,
+      "amount": 49.90,
+      "date": "2026-02-01",
+      "status": "COMPLETED"
+    }
   ]
 }
