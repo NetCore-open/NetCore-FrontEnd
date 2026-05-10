@@ -1,0 +1,51 @@
+<div class="plans-container">
+  <h2>Planes de Suscripción</h2>
+
+  @if (store.isLoading()) {
+    <p class="loading">Cargando planes...</p>
+  }
+
+  @if (store.error()) {
+    <p class="error">{{ store.error() }}</p>
+  }
+
+  <div class="plans-grid">
+    @for (plan of store.plans(); track plan.id) {
+      <div class="plan-card" [class.recommended]="plan.recommended">
+        @if (plan.recommended) {
+          <span class="badge">+ Recomendado</span>
+        }
+        <h3>{{ plan.name }}</h3>
+        <p class="price">S/. {{ plan.price }} <span>/ {{ plan.billingPeriod }}</span></p>
+
+        <div class="features-section">
+          <h4>Para Lavanderías</h4>
+          <ul>
+            @for (feature of plan.laundryFeatures; track feature) {
+              <li>{{ feature }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="features-section">
+          <h4>Para Clientes</h4>
+          <ul>
+            @for (feature of plan.clientFeatures; track feature) {
+              <li>{{ feature }}</li>
+            }
+          </ul>
+        </div>
+
+        <button (click)="onSelectPlan(plan.id)" [class.btn-primary]="plan.recommended">
+          @if (plan.type === 'FREE') {
+            Comenzar gratis
+          } @else if (plan.type === 'PREMIUM') {
+            Suscribirme ahora
+          } @else {
+            Elegir plan anual
+          }
+        </button>
+      </div>
+    }
+  </div>
+</div>
