@@ -1,0 +1,70 @@
+.subscriptions-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.subscription-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.active {
+  background-color: #e8f8f0;
+  color: #27ae60;
+}
+
+.status.cancelled {
+  background-color: #fee;
+  color: #c0392b;
+}
+
+.status.expired {
+  background-color: #fef5e7;
+  color: #f39c12;
+}
+
+.subscription-card p {
+  color: #34495e;
+  margin: 8px 0;
+}
+
+.empty {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 40px;
+}
+
+.loading, .error {
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error {
+  background-color: #fee;
+  color: #c0392b;
+}

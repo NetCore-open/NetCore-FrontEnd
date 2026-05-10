@@ -1,0 +1,28 @@
+<div class="subscriptions-container">
+  <h2>Mis Suscripciones</h2>
+
+  @if (store.isLoading()) {
+    <p class="loading">Cargando suscripciones...</p>
+  }
+
+  @if (store.error()) {
+    <p class="error">{{ store.error() }}</p>
+  }
+
+  @if (store.subscriptions().length === 0 && !store.isLoading()) {
+    <p class="empty">No tienes suscripciones activas.</p>
+  }
+
+  @for (sub of store.subscriptions(); track sub.id) {
+    <div class="subscription-card">
+      <div class="sub-header">
+        <span class="status" [class]="sub.status.toLowerCase()">
+          {{ sub.status }}
+        </span>
+      </div>
+      <p><strong>Plan ID:</strong> {{ sub.planId }}</p>
+      <p><strong>Inicio:</strong> {{ sub.startDate }}</p>
+      <p><strong>Vencimiento:</strong> {{ sub.endDate }}</p>
+    </div>
+  }
+</div>
