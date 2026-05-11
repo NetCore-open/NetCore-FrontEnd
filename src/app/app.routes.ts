@@ -8,6 +8,7 @@ import { NotificationsCenterComponent } from './notifications/presentation/views
 import { authGuard } from './users/application/auth.guard';
 import { PlansComponent } from './billing/presentation/views/plans/plans';
 import { SubscriptionsComponent } from './billing/presentation/views/subscriptions/subscriptions';
+import { Dashboard } from './layout/views/dashboard/dashboard';
 // Asumiendo que tienes o crearás este para Carlos
 // import { InventoryComponent } from './admin/views/inventory/inventory';
 
