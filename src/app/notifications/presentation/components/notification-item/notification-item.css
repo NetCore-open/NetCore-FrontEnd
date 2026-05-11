@@ -1,0 +1,157 @@
+.notification {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--cw-surface);
+  border: 1px solid var(--cw-border);
+  border-radius: var(--cw-radius-md);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.notification:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--cw-shadow-md);
+  border-color: var(--cw-primary);
+}
+
+.notification--unread {
+  background: linear-gradient(135deg, var(--cw-primary-light) 0%, #ffffff 60%);
+  border-color: rgba(52, 152, 219, 0.3);
+}
+
+.notification--high {
+  border-left: 3px solid var(--cw-danger);
+}
+
+.notification__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  color: white;
+  background: var(--cw-primary);
+}
+
+.notification[data-type='ORDER'] .notification__icon {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+.notification[data-type='LOGISTICS'] .notification__icon {
+  background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+.notification[data-type='BILLING'] .notification__icon {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+.notification[data-type='SYSTEM'] .notification__icon {
+  background: linear-gradient(135deg, #6c7a96, #4a5876);
+}
+.notification[data-type='PROMO'] .notification__icon {
+  background: linear-gradient(135deg, #f39c12, #d35400);
+}
+
+.notification__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.notification__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cw-text);
+}
+
+.notification__type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--cw-primary-light);
+  color: var(--cw-primary-dark);
+}
+
+.notification__priority {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(231, 76, 60, 0.12);
+  color: var(--cw-danger);
+}
+
+.notification__message {
+  margin: 0 0 10px 0;
+  font-size: 13.5px;
+  color: var(--cw-text-muted);
+  line-height: 1.45;
+}
+
+.notification__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification__time {
+  font-size: 12px;
+  color: var(--cw-text-muted);
+}
+
+.notification__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.notification__action {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--cw-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.notification__action--read:hover {
+  background: rgba(39, 174, 96, 0.12);
+  color: var(--cw-success);
+}
+
+.notification__action--delete:hover {
+  background: rgba(231, 76, 60, 0.12);
+  color: var(--cw-danger);
+}
+
+.notification__dot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  background: var(--cw-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.18);
+}
