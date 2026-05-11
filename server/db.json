@@ -43,5 +43,132 @@
       "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=400",
       "status": "CLOSED"
     }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Tu pedido fue recibido",
+      "message": "Recibimos tu pedido #1042. Pronto programaremos el recojo en tu domicilio.",
+      "type": "ORDER",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-10T22:45:00.000Z",
+      "link": "/orders/1042"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Tu repartidor está en camino",
+      "message": "Luis G. llegará a tu dirección en aproximadamente 15 minutos para recoger tu ropa.",
+      "type": "LOGISTICS",
+      "priority": "HIGH",
+      "isRead": false,
+      "createdAt": "2026-05-10T21:30:00.000Z",
+      "link": "/orders/1042/tracking"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Pedido #1039 listo para entrega",
+      "message": "Tu ropa fue lavada, secada y empaquetada. La entregaremos hoy entre 6pm y 8pm.",
+      "type": "ORDER",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-10T18:12:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "title": "20% de descuento en tu próximo pedido",
+      "message": "Por ser cliente frecuente, disfruta de un 20% de descuento usando el código GRACIAS20.",
+      "type": "PROMO",
+      "priority": "LOW",
+      "isRead": false,
+      "createdAt": "2026-05-10T13:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "title": "Pago confirmado",
+      "message": "Tu pago de S/ 48.50 por el pedido #1037 fue procesado correctamente.",
+      "type": "BILLING",
+      "priority": "LOW",
+      "isRead": true,
+      "createdAt": "2026-05-09T19:20:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "title": "Pedido #1037 entregado",
+      "message": "Esperamos que disfrutes tu ropa limpia. ¿Nos cuentas qué tal estuvo?",
+      "type": "ORDER",
+      "priority": "LOW",
+      "isRead": true,
+      "createdAt": "2026-05-09T17:05:00.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "title": "Mantenimiento programado",
+      "message": "El próximo domingo realizaremos mantenimiento entre 2am y 4am. La app podría estar lenta.",
+      "type": "SYSTEM",
+      "priority": "LOW",
+      "isRead": true,
+      "createdAt": "2026-05-08T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "title": "Nueva orden recibida",
+      "message": "Pedido #1042 ingresó al sistema. Cliente: Andrea García. Total: S/ 62.00.",
+      "type": "ORDER",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-10T22:46:00.000Z",
+      "link": "/admin/orders/1042"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "title": "Inventario bajo: detergente líquido",
+      "message": "Quedan 8 unidades de detergente líquido (5L). Te recomendamos reabastecer.",
+      "type": "SYSTEM",
+      "priority": "HIGH",
+      "isRead": false,
+      "createdAt": "2026-05-10T20:00:00.000Z",
+      "link": "/admin/inventory"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "title": "Ruta optimizada disponible",
+      "message": "El motor de IA generó una ruta más eficiente para los recojos vespertinos. Ahorro estimado: 22%.",
+      "type": "LOGISTICS",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-10T17:30:00.000Z",
+      "link": "/admin/logistics"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "title": "Pago recibido",
+      "message": "Se confirmó el pago de S/ 48.50 del pedido #1037 (Andrea García).",
+      "type": "BILLING",
+      "priority": "LOW",
+      "isRead": true,
+      "createdAt": "2026-05-09T19:20:30.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "title": "Reporte semanal disponible",
+      "message": "El reporte operativo de la semana 19 ya está listo para revisión.",
+      "type": "SYSTEM",
+      "priority": "LOW",
+      "isRead": true,
+      "createdAt": "2026-05-08T08:00:00.000Z"
+    }
   ]
 }
