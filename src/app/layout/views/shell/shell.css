@@ -1,0 +1,25 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--cw-bg);
+}
+
+.shell__sidebar {
+  width: var(--cw-sidebar-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.shell__content {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .shell__content {
+    padding: 20px;
+  }
+}
