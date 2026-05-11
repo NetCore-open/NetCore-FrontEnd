@@ -1,0 +1,39 @@
+<aside class="sidebar">
+  <div class="sidebar__brand">
+    <div class="sidebar__logo">CW</div>
+    <div class="sidebar__brand-text">
+      <span class="sidebar__brand-name">CleanWave</span>
+      <span class="sidebar__brand-tagline">Lavandería digital</span>
+    </div>
+  </div>
+
+  <nav class="sidebar__nav">
+    @for (item of navItems(); track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="sidebar__link--active"
+        class="sidebar__link">
+        <app-icon [name]="item.icon" class="sidebar__link-icon"></app-icon>
+        <span class="sidebar__link-label">{{ item.label }}</span>
+        @if (item.showBadge && unreadCount() > 0) {
+          <span class="sidebar__badge">{{ unreadCount() > 99 ? '99+' : unreadCount() }}</span>
+        }
+      </a>
+    }
+  </nav>
+
+  @if (currentUser(); as user) {
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">{{ userInitials() }}</div>
+        <div class="sidebar__user-info">
+          <span class="sidebar__user-name">{{ user.firstName }} {{ user.lastName }}</span>
+          <span class="sidebar__user-role">{{ roleLabel() }}</span>
+        </div>
+      </div>
+      <button class="sidebar__logout" type="button" (click)="logout()" title="Cerrar sesión">
+        <app-icon name="logout"></app-icon>
+      </button>
+    </div>
+  }
+</aside>
