@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --cw-primary: #3498db;
+  --cw-primary-dark: #2980b9;
+  --cw-primary-light: #ebf5fb;
+  --cw-accent: #1abc9c;
+  --cw-warning: #f39c12;
+  --cw-danger: #e74c3c;
+  --cw-success: #27ae60;
+
+  --cw-bg: #f4f7fb;
+  --cw-surface: #ffffff;
+  --cw-sidebar-bg: #1f2a44;
+  --cw-sidebar-bg-hover: #2b3a5e;
+  --cw-sidebar-active: #3498db;
+
+  --cw-text: #1f2a44;
+  --cw-text-muted: #6c7a96;
+  --cw-text-inverse: #ffffff;
+  --cw-border: #e3e9f2;
+
+  --cw-radius-sm: 6px;
+  --cw-radius-md: 10px;
+  --cw-radius-lg: 14px;
+
+  --cw-shadow-sm: 0 1px 3px rgba(31, 42, 68, 0.06);
+  --cw-shadow-md: 0 4px 12px rgba(31, 42, 68, 0.08);
+  --cw-shadow-lg: 0 12px 32px rgba(31, 42, 68, 0.12);
+
+  --cw-sidebar-width: 250px;
+  --cw-topbar-height: 64px;
+
+  --cw-font: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--cw-font);
+  background: var(--cw-bg);
+  color: var(--cw-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 12px 0;
+  color: var(--cw-text);
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}

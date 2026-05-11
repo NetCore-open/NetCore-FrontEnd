@@ -45,9 +45,9 @@ export class UsersStore {
 
           // Redirección según rol (Carlos vs Andrea)
           if (userEntity.role === 'ADMIN') {
-            this.router.navigate(['/admin/inventory']);
+            this.router.navigate(['/admin/dashboard']);
           } else {
-            this.router.navigate(['/client/dashboard']); // Ajusta si en rutas le pusiste solo '/dashboard'
+            this.router.navigate(['/dashboard']);
           }
         } else {
           // Si el array viene vacío, no encontró a nadie

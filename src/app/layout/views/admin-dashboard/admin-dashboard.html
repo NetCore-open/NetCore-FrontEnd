@@ -1,0 +1,113 @@
+<section class="dashboard">
+  <header class="hero">
+    <div class="hero__content">
+      <span class="hero__eyebrow">{{ greeting() }} · Panel de administración</span>
+      <h1 class="hero__title">Bienvenido, {{ user()?.firstName }}</h1>
+      <p class="hero__subtitle">
+        Resumen operativo de tu lavandería. Monitorea inventario, pedidos y logística en tiempo real.
+      </p>
+    </div>
+    <div class="hero__decoration">CW</div>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi__icon kpi__icon--blue"><app-icon name="package"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Pedidos hoy</span>
+        <span class="kpi__value">38</span>
+        <span class="kpi__delta kpi__delta--up">+12% vs ayer</span>
+      </div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi__icon kpi__icon--green"><app-icon name="check-circle"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Entregas a tiempo</span>
+        <span class="kpi__value">96%</span>
+        <span class="kpi__delta kpi__delta--up">+2.4%</span>
+      </div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi__icon kpi__icon--orange"><app-icon name="truck"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">En ruta</span>
+        <span class="kpi__value">7</span>
+        <span class="kpi__delta">vehículos activos</span>
+      </div>
+    </div>
+
+    <a routerLink="/notifications" class="kpi kpi--link">
+      <div class="kpi__icon kpi__icon--purple"><app-icon name="bell"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Alertas</span>
+        <span class="kpi__value">{{ unreadCount() }}</span>
+        <span class="kpi__delta">sin leer</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="grid-two">
+    <div class="panel">
+      <div class="panel__header">
+        <h2>Estado de operaciones</h2>
+        <span class="panel__hint">Tiempo real</span>
+      </div>
+      <ul class="ops">
+        <li class="ops__item">
+          <span class="ops__dot ops__dot--green"></span>
+          <div class="ops__body">
+            <span class="ops__title">Lavado en curso</span>
+            <span class="ops__value">12 cargas activas</span>
+          </div>
+        </li>
+        <li class="ops__item">
+          <span class="ops__dot ops__dot--blue"></span>
+          <div class="ops__body">
+            <span class="ops__title">Pendientes de recojo</span>
+            <span class="ops__value">5 direcciones programadas</span>
+          </div>
+        </li>
+        <li class="ops__item">
+          <span class="ops__dot ops__dot--orange"></span>
+          <div class="ops__body">
+            <span class="ops__title">Retrasos</span>
+            <span class="ops__value">1 pedido fuera de tiempo objetivo</span>
+          </div>
+        </li>
+        <li class="ops__item">
+          <span class="ops__dot ops__dot--gray"></span>
+          <div class="ops__body">
+            <span class="ops__title">Inventario bajo</span>
+            <span class="ops__value">2 insumos por reabastecer</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel__header">
+        <h2>Accesos rápidos</h2>
+      </div>
+      <div class="actions">
+        <a routerLink="/admin/inventory" class="actions__item">
+          <app-icon name="box"></app-icon>
+          <span>Gestionar inventario</span>
+        </a>
+        <a routerLink="/admin/orders" class="actions__item">
+          <app-icon name="package"></app-icon>
+          <span>Ver pedidos</span>
+        </a>
+        <a routerLink="/admin/logistics" class="actions__item">
+          <app-icon name="truck"></app-icon>
+          <span>Optimizar rutas</span>
+        </a>
+        <a routerLink="/notifications" class="actions__item">
+          <app-icon name="bell"></app-icon>
+          <span>Notificaciones</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

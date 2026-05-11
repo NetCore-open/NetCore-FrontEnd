@@ -1,0 +1,48 @@
+<article
+  class="notification"
+  [class.notification--unread]="!notification().isRead"
+  [class.notification--high]="notification().priority === 'HIGH'"
+  [attr.data-type]="notification().type"
+  (click)="onCardClick()">
+  <div class="notification__icon">
+    <app-icon [name]="icon()"></app-icon>
+  </div>
+
+  <div class="notification__body">
+    <div class="notification__header">
+      <h4 class="notification__title">{{ notification().title }}</h4>
+      <span class="notification__type-badge">{{ typeLabel() }}</span>
+      @if (notification().priority === 'HIGH') {
+        <span class="notification__priority">Importante</span>
+      }
+    </div>
+
+    <p class="notification__message">{{ notification().message }}</p>
+
+    <div class="notification__footer">
+      <span class="notification__time">{{ notification().createdAt | timeAgo }}</span>
+      <div class="notification__actions">
+        @if (!notification().isRead) {
+          <button
+            type="button"
+            class="notification__action notification__action--read"
+            (click)="onMarkAsRead($event)"
+            title="Marcar como leído">
+            <app-icon name="check-circle"></app-icon>
+          </button>
+        }
+        <button
+          type="button"
+          class="notification__action notification__action--delete"
+          (click)="onDelete($event)"
+          title="Eliminar">
+          <app-icon name="trash"></app-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (!notification().isRead) {
+    <span class="notification__dot" aria-label="No leído"></span>
+  }
+</article>
