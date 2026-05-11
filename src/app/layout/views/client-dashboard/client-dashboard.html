@@ -1,0 +1,74 @@
+<section class="dashboard">
+  <header class="hero">
+    <div class="hero__content">
+      <span class="hero__eyebrow">{{ greeting() }}</span>
+      <h1 class="hero__title">Hola, {{ user()?.firstName }} 👋</h1>
+      <p class="hero__subtitle">
+        Gestiona tus pedidos de lavandería desde un solo lugar. Sigue el estado de tus prendas en tiempo real.
+      </p>
+    </div>
+    <div class="hero__decoration">CW</div>
+  </header>
+
+  <div class="grid">
+    <a routerLink="/notifications" class="card card--accent">
+      <div class="card__icon"><app-icon name="bell"></app-icon></div>
+      <div class="card__body">
+        <span class="card__label">Notificaciones</span>
+        <span class="card__value">{{ unreadCount() }}</span>
+        <span class="card__hint">sin leer</span>
+      </div>
+    </a>
+
+    <div class="card">
+      <div class="card__icon card__icon--blue"><app-icon name="package"></app-icon></div>
+      <div class="card__body">
+        <span class="card__label">Pedidos activos</span>
+        <span class="card__value">2</span>
+        <span class="card__hint">en proceso</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__icon card__icon--green"><app-icon name="check-circle"></app-icon></div>
+      <div class="card__body">
+        <span class="card__label">Entregados</span>
+        <span class="card__value">14</span>
+        <span class="card__hint">este mes</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__icon card__icon--orange"><app-icon name="truck"></app-icon></div>
+      <div class="card__body">
+        <span class="card__label">En camino</span>
+        <span class="card__value">1</span>
+        <span class="card__hint">recojo programado</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel__header">
+      <h2>Accesos rápidos</h2>
+    </div>
+    <div class="actions">
+      <button type="button" class="actions__item">
+        <app-icon name="package"></app-icon>
+        <span>Nuevo pedido</span>
+      </button>
+      <button type="button" class="actions__item">
+        <app-icon name="truck"></app-icon>
+        <span>Programar recojo</span>
+      </button>
+      <a routerLink="/notifications" class="actions__item">
+        <app-icon name="bell"></app-icon>
+        <span>Ver notificaciones</span>
+      </a>
+      <button type="button" class="actions__item">
+        <app-icon name="info"></app-icon>
+        <span>Soporte</span>
+      </button>
+    </div>
+  </div>
+</section>
