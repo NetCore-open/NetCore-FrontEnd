@@ -1,0 +1,213 @@
+.logistics-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.logistics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #111827);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #6b7280);
+  margin: 0.25rem 0 0;
+}
+
+.header-stats {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.stat-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  min-width: 72px;
+}
+
+.stat-badge.pending  { background: #fef3c7; color: #92400e; }
+.stat-badge.transit  { background: #dbeafe; color: #1e40af; }
+.stat-badge.delivered { background: #d1fae5; color: #065f46; }
+
+.stat-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Filters */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: #f3f4f6;
+}
+
+.filter-btn.active {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+/* State messages */
+.state-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  color: #6b7280;
+  gap: 0.75rem;
+}
+
+.state-message.error { color: #dc2626; }
+.state-message.empty { color: #9ca3af; }
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #111827;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.deliveries-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.deliveries-table thead tr {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.deliveries-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.deliveries-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.deliveries-table tbody tr:last-child { border-bottom: none; }
+.deliveries-table tbody tr:hover { background: #f9fafb; }
+
+.deliveries-table td {
+  padding: 0.75rem 1rem;
+  color: #374151;
+}
+
+.id-cell { font-weight: 600; color: #111827; }
+
+.address-cell {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badges */
+.type-badge,
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.type-badge.pickup   { background: #ede9fe; color: #5b21b6; }
+.type-badge.delivery { background: #dbeafe; color: #1e40af; }
+
+.status-badge.pending    { background: #fef3c7; color: #92400e; }
+.status-badge.assigned   { background: #e0e7ff; color: #3730a3; }
+.status-badge.picked-up  { background: #fce7f3; color: #9d174d; }
+.status-badge.in-transit { background: #dbeafe; color: #1e40af; }
+.status-badge.delivered  { background: #d1fae5; color: #065f46; }
+.status-badge.failed     { background: #fee2e2; color: #991b1b; }
+
+/* Action buttons */
+.actions-cell {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.btn-advance,
+.btn-fail {
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s;
+}
+
+.btn-advance {
+  background: #111827;
+  color: #fff;
+}
+
+.btn-fail {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-advance:hover,
+.btn-fail:hover {
+  opacity: 0.8;
+}

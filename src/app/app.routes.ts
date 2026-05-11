@@ -9,8 +9,7 @@ import { authGuard } from './users/application/auth.guard';
 import { PlansComponent } from './billing/presentation/views/plans/plans';
 import { SubscriptionsComponent } from './billing/presentation/views/subscriptions/subscriptions';
 import { Dashboard } from './layout/views/dashboard/dashboard';
-// Asumiendo que tienes o crearás este para Carlos
-// import { InventoryComponent } from './admin/views/inventory/inventory';
+import { LogisticsComponent } from './logistics/presentation/views/logistics/logistics';
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -40,18 +39,14 @@ export const routes: Routes = [
         path: 'notifications',
         component: NotificationsCenterComponent
       },
+      {
+        path: 'admin/logistics',
+        component: LogisticsComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
-
-  // 🏢 Ruta para Carlos (Administrador)
-  {
-    path: 'admin/inventory',
-    // component: InventoryComponent,
-    component: Dashboard, // Uso Dashboard temporalmente para que no te de error si no tienes el otro
-    canActivate: [authGuard(['ADMIN'])]
-  },
-
 
   {
     path: 'admin/plans',
