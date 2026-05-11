@@ -1,0 +1,112 @@
+<div class="logistics-container">
+
+  <!-- Header -->
+  <div class="logistics-header">
+    <div class="header-title">
+      <h1>Logística</h1>
+      <p class="subtitle">Gestión de recojos y entregas</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-badge pending">
+        <span class="stat-number">{{ store.pendingCount() }}</span>
+        <span class="stat-label">Pendientes</span>
+      </div>
+      <div class="stat-badge transit">
+        <span class="stat-number">{{ store.inTransitCount() }}</span>
+        <span class="stat-label">En tránsito</span>
+      </div>
+      <div class="stat-badge delivered">
+        <span class="stat-number">{{ store.deliveredCount() }}</span>
+        <span class="stat-label">Entregados</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    @for (f of filters; track f.value) {
+      <button
+        class="filter-btn"
+        [class.active]="store.filter() === f.value"
+        (click)="setFilter(f.value)">
+        {{ f.label }}
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (store.loading()) {
+    <div class="state-message">
+      <span class="spinner"></span>
+      <p>Cargando envíos...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (store.error()) {
+    <div class="state-message error">
+      <p>{{ store.error() }}</p>
+    </div>
+  }
+
+  <!-- Empty -->
+  @if (!store.loading() && !store.error() && store.filteredDeliveries().length === 0) {
+    <div class="state-message empty">
+      <p>No hay envíos para este filtro.</p>
+    </div>
+  }
+
+  <!-- Table -->
+  @if (!store.loading() && store.filteredDeliveries().length > 0) {
+    <div class="table-wrapper">
+      <table class="deliveries-table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tipo</th>
+          <th>Pedido</th>
+          <th>Dirección</th>
+          <th>Fecha</th>
+          <th>Repartidor</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (delivery of store.filteredDeliveries(); track trackById($index, delivery)) {
+            <tr>
+              <td class="id-cell">#{{ delivery.id }}</td>
+              <td>
+                <span class="type-badge" [class]="delivery.type.toLowerCase()">
+                  {{ typeLabel(delivery.type) }}
+                </span>
+              </td>
+              <td>#{{ delivery.orderId }}</td>
+              <td class="address-cell">{{ delivery.address }}</td>
+              <td>{{ delivery.scheduledDate | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ delivery.driverName ?? '—' }}</td>
+              <td>
+                <span class="status-badge" [class]="delivery.status.toLowerCase().replace('_', '-')">
+                  {{ statusLabel(delivery.status) }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                @if (nextStatus(delivery)) {
+                  <button class="btn-advance" (click)="advance(delivery)">
+                    Avanzar
+                  </button>
+                }
+                @if (delivery.status !== 'DELIVERED' && delivery.status !== 'FAILED') {
+                  <button class="btn-fail" (click)="markFailed(delivery)">
+                    Fallido
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+</div>

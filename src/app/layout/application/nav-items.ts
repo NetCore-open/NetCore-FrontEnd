@@ -51,5 +51,17 @@ export const NAV_ITEMS: NavItem[] = [
     path: '/admin/logistics',
     icon: 'truck',
     roles: ['ADMIN']
+  },
+  {
+    label: 'Planes',
+    path: '/admin/plans',
+    icon: 'credit-card',
+    roles: ['ADMIN']
+  },
+  {
+    label: 'Suscripciones',
+    path: '/admin/subscriptions',
+    icon: 'refresh-cw',
+    roles: ['ADMIN']
   }
 ];
