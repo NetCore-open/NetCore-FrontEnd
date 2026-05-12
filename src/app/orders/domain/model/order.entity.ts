@@ -1,3 +1,4 @@
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
 import { OrderItem } from './order-item.entity';
 
 export type OrderStatus =
@@ -9,7 +10,7 @@ export type OrderStatus =
   | 'DELIVERED'
   | 'CANCELLED';
 
-export class Order {
+export class Order implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly userId: number,

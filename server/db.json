@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "email": "carlos@cleanwave.com",
       "password": "admin123",
       "firstName": "Carlos",
@@ -9,18 +9,36 @@
       "role": "ADMIN"
     },
     {
-      "id": "2",
+      "id": 2,
       "email": "andrea@ejemplo.com",
       "password": "123456",
       "firstName": "Andrea",
       "lastName": "García",
       "role": "CLIENT",
       "phone": "987654321"
+    },
+    {
+      "id": 3,
+      "email": "luis@ejemplo.com",
+      "password": "123456",
+      "firstName": "Luis",
+      "lastName": "Martínez",
+      "role": "CLIENT",
+      "phone": "987123456"
+    },
+    {
+      "id": 4,
+      "email": "sofia@ejemplo.com",
+      "password": "123456",
+      "firstName": "Sofía",
+      "lastName": "Torres",
+      "role": "CLIENT",
+      "phone": "987654000"
     }
   ],
   "laundries": [
     {
-      "id": "1",
+      "id": 1,
       "name": "RapidWash Miraflores",
       "address": "Av. Larco 123",
       "rating": 4.8,
@@ -28,7 +46,7 @@
       "status": "OPEN"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Clean & Go",
       "address": "Calle Las Pizzas 456",
       "rating": 4.5,
@@ -36,7 +54,7 @@
       "status": "OPEN"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "EcoLaundry",
       "address": "Av. Arequipa 2200",
       "rating": 4.9,
@@ -46,7 +64,7 @@
   ],
   "plans": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Plan Gratuito",
       "price": 0,
       "type": "FREE",
@@ -62,7 +80,7 @@
       "recommended": false
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Plan Premium",
       "price": 89,
       "type": "PREMIUM",
@@ -79,7 +97,7 @@
       "recommended": true
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Plan Anual",
       "price": 1040,
       "type": "ANNUAL",
@@ -98,7 +116,7 @@
   ],
   "subscriptions": [
     {
-      "id": "1",
+      "id": 1,
       "planId": 2,
       "laundryId": 1,
       "status": "ACTIVE",
@@ -106,7 +124,7 @@
       "endDate": "2026-05-01"
     },
     {
-      "id": "2",
+      "id": 2,
       "planId": 1,
       "laundryId": 2,
       "status": "EXPIRED",
@@ -114,139 +132,416 @@
       "endDate": "2026-03-01"
     },
     {
-      "planId": "1",
+      "id": 3,
+      "planId": 3,
       "laundryId": 1,
       "status": "ACTIVE",
-      "startDate": "2026-05-11",
-      "endDate": "2026-06-10",
-      "id": "RG99hf-a-vA"
+      "startDate": "2026-05-01",
+      "endDate": "2027-05-01"
     },
     {
-      "planId": "2",
-      "laundryId": 1,
-      "status": "ACTIVE",
-      "startDate": "2026-05-11",
-      "endDate": "2026-06-10",
-      "id": "aWIkIUS8DQU"
-    },
-    {
-      "planId": "3",
-      "laundryId": 1,
-      "status": "ACTIVE",
-      "startDate": "2026-05-11",
-      "endDate": "2026-06-10",
-      "id": "y702rUS4RLY"
+      "id": 4,
+      "planId": 1,
+      "laundryId": 3,
+      "status": "CANCELLED",
+      "startDate": "2026-01-01",
+      "endDate": "2026-02-01"
     }
   ],
   "transactions": [
     {
-      "id": "1",
+      "id": 1,
       "subscriptionId": 1,
-      "amount": 99.9,
+      "amount": 89.00,
       "date": "2026-04-01",
       "status": "COMPLETED"
     },
     {
-      "id": "2",
+      "id": 2,
       "subscriptionId": 2,
-      "amount": 49.9,
+      "amount": 0.00,
       "date": "2026-02-01",
       "status": "COMPLETED"
+    },
+    {
+      "id": 3,
+      "subscriptionId": 3,
+      "amount": 1040.00,
+      "date": "2026-05-01",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 4,
+      "subscriptionId": 1,
+      "amount": 89.00,
+      "date": "2026-05-01",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 5,
+      "subscriptionId": 2,
+      "amount": 89.00,
+      "date": "2026-03-01",
+      "status": "FAILED"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "laundryId": 1,
+      "status": "PENDING",
+      "items": [
+        { "id": 1, "orderId": 1, "garmentType": "Camisa", "quantity": 3, "unitPrice": 8.50 },
+        { "id": 2, "orderId": 1, "garmentType": "Pantalón", "quantity": 2, "unitPrice": 12.00 }
+      ],
+      "address": "Av. Primavera 456, Surco",
+      "scheduledPickup": "2026-05-13T10:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-12T08:00:00.000Z",
+      "updatedAt": "2026-05-12T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "laundryId": 1,
+      "status": "IN_PROCESS",
+      "items": [
+        { "id": 3, "orderId": 2, "garmentType": "Sábana", "quantity": 2, "unitPrice": 15.00 },
+        { "id": 4, "orderId": 2, "garmentType": "Toalla", "quantity": 4, "unitPrice": 5.00 }
+      ],
+      "address": "Calle Los Pinos 123, Miraflores",
+      "scheduledPickup": "2026-05-12T14:00:00.000Z",
+      "notes": "Dejar en recepción",
+      "createdAt": "2026-05-11T10:00:00.000Z",
+      "updatedAt": "2026-05-11T15:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "laundryId": 2,
+      "status": "READY",
+      "items": [
+        { "id": 5, "orderId": 3, "garmentType": "Terno", "quantity": 1, "unitPrice": 35.00 },
+        { "id": 6, "orderId": 3, "garmentType": "Corbata", "quantity": 2, "unitPrice": 5.00 }
+      ],
+      "address": "Av. Larco 789, Miraflores",
+      "scheduledPickup": "2026-05-11T09:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-10T09:00:00.000Z",
+      "updatedAt": "2026-05-12T07:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "laundryId": 1,
+      "status": "DELIVERED",
+      "items": [
+        { "id": 7, "orderId": 4, "garmentType": "Ropa de cama", "quantity": 1, "unitPrice": 25.00 }
+      ],
+      "address": "Jr. Las Flores 77, San Isidro",
+      "scheduledPickup": "2026-05-09T11:00:00.000Z",
+      "notes": "Llamar al llegar",
+      "createdAt": "2026-05-08T11:00:00.000Z",
+      "updatedAt": "2026-05-09T13:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "laundryId": 2,
+      "status": "CANCELLED",
+      "items": [
+        { "id": 8, "orderId": 5, "garmentType": "Camisa", "quantity": 1, "unitPrice": 8.50 }
+      ],
+      "address": "Av. Benavides 890, Miraflores",
+      "scheduledPickup": "2026-05-10T16:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-09T16:00:00.000Z",
+      "updatedAt": "2026-05-10T08:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "laundryId": 1,
+      "status": "CONFIRMED",
+      "items": [
+        { "id": 9, "orderId": 6, "garmentType": "Camisa", "quantity": 5, "unitPrice": 8.50 },
+        { "id": 10, "orderId": 6, "garmentType": "Polo", "quantity": 3, "unitPrice": 6.00 }
+      ],
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledPickup": "2026-05-13T09:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-12T07:00:00.000Z",
+      "updatedAt": "2026-05-12T07:30:00.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 4,
+      "laundryId": 2,
+      "status": "PICKED_UP",
+      "items": [
+        { "id": 11, "orderId": 7, "garmentType": "Vestido", "quantity": 2, "unitPrice": 18.00 },
+        { "id": 12, "orderId": 7, "garmentType": "Blusa", "quantity": 3, "unitPrice": 8.00 }
+      ],
+      "address": "Calle Monte Rosa 220, Surco",
+      "scheduledPickup": "2026-05-11T16:00:00.000Z",
+      "notes": "Ropa delicada, lavado a mano",
+      "createdAt": "2026-05-10T14:00:00.000Z",
+      "updatedAt": "2026-05-11T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 3,
+      "laundryId": 1,
+      "status": "DELIVERED",
+      "items": [
+        { "id": 13, "orderId": 8, "garmentType": "Pantalón", "quantity": 3, "unitPrice": 12.00 },
+        { "id": 14, "orderId": 8, "garmentType": "Camisa", "quantity": 4, "unitPrice": 8.50 }
+      ],
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledPickup": "2026-05-08T10:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-07T09:00:00.000Z",
+      "updatedAt": "2026-05-08T15:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "userId": 2,
+      "laundryId": 1,
+      "status": "CONFIRMED",
+      "items": [
+        { "id": 15, "orderId": 9, "garmentType": "Abrigo", "quantity": 1, "unitPrice": 28.00 },
+        { "id": 16, "orderId": 9, "garmentType": "Bufanda", "quantity": 2, "unitPrice": 6.00 }
+      ],
+      "address": "Av. Primavera 456, Surco",
+      "scheduledPickup": "2026-05-14T11:00:00.000Z",
+      "notes": "Limpieza en seco",
+      "createdAt": "2026-05-12T09:30:00.000Z",
+      "updatedAt": "2026-05-12T09:30:00.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 4,
+      "laundryId": 3,
+      "status": "IN_PROCESS",
+      "items": [
+        { "id": 17, "orderId": 10, "garmentType": "Sábana", "quantity": 3, "unitPrice": 15.00 },
+        { "id": 18, "orderId": 10, "garmentType": "Funda de almohada", "quantity": 4, "unitPrice": 4.00 },
+        { "id": 19, "orderId": 10, "garmentType": "Toalla", "quantity": 5, "unitPrice": 5.00 }
+      ],
+      "address": "Calle Monte Rosa 220, Surco",
+      "scheduledPickup": "2026-05-10T08:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-09T20:00:00.000Z",
+      "updatedAt": "2026-05-10T10:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "userId": 2,
+      "laundryId": 2,
+      "status": "DELIVERED",
+      "items": [
+        { "id": 20, "orderId": 11, "garmentType": "Camisa", "quantity": 2, "unitPrice": 8.50 }
+      ],
+      "address": "Calle Los Pinos 123, Miraflores",
+      "scheduledPickup": "2026-05-05T10:00:00.000Z",
+      "notes": null,
+      "createdAt": "2026-05-04T10:00:00.000Z",
+      "updatedAt": "2026-05-05T14:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 3,
+      "laundryId": 2,
+      "status": "PENDING",
+      "items": [
+        { "id": 21, "orderId": 12, "garmentType": "Terno", "quantity": 2, "unitPrice": 35.00 },
+        { "id": 22, "orderId": 12, "garmentType": "Corbata", "quantity": 3, "unitPrice": 5.00 }
+      ],
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledPickup": "2026-05-14T15:00:00.000Z",
+      "notes": "Evento corporativo el viernes",
+      "createdAt": "2026-05-12T10:00:00.000Z",
+      "updatedAt": "2026-05-12T10:00:00.000Z"
     }
   ],
   "deliveries": [
     {
-      "id": "1",
-      "orderId": 1042,
+      "id": 1,
+      "orderId": 1,
       "userId": 2,
       "type": "PICKUP",
       "status": "IN_TRANSIT",
       "address": "Av. Primavera 456, Surco",
-      "scheduledDate": "2026-05-11T10:00:00.000Z",
+      "scheduledDate": "2026-05-13T10:00:00.000Z",
       "driverName": "Luis Gómez",
       "driverPhone": "987000111",
       "notes": "Timbre no funciona, llamar al llegar",
-      "createdAt": "2026-05-10T22:45:00.000Z",
-      "updatedAt": "2026-05-11T09:30:00.000Z"
+      "createdAt": "2026-05-12T08:00:00.000Z",
+      "updatedAt": "2026-05-12T09:30:00.000Z"
     },
     {
-      "id": "2",
-      "orderId": 1039,
+      "id": 2,
+      "orderId": 2,
       "userId": 2,
       "type": "DELIVERY",
       "status": "PENDING",
       "address": "Calle Los Pinos 123, Miraflores",
-      "scheduledDate": "2026-05-11T18:00:00.000Z",
+      "scheduledDate": "2026-05-12T14:00:00.000Z",
       "driverName": null,
       "driverPhone": null,
       "notes": null,
-      "createdAt": "2026-05-10T18:12:00.000Z",
-      "updatedAt": "2026-05-10T18:12:00.000Z"
+      "createdAt": "2026-05-11T10:00:00.000Z",
+      "updatedAt": "2026-05-11T10:00:00.000Z"
     },
     {
-      "id": "3",
-      "orderId": 1037,
+      "id": 3,
+      "orderId": 4,
       "userId": 2,
       "type": "DELIVERY",
       "status": "DELIVERED",
-      "address": "Av. Benavides 890, Miraflores",
-      "scheduledDate": "2026-05-09T17:00:00.000Z",
+      "address": "Jr. Las Flores 77, San Isidro",
+      "scheduledDate": "2026-05-09T11:00:00.000Z",
       "driverName": "Rosa Quispe",
       "driverPhone": "987000222",
       "notes": null,
-      "createdAt": "2026-05-09T10:00:00.000Z",
-      "updatedAt": "2026-05-09T17:05:00.000Z"
+      "createdAt": "2026-05-08T11:00:00.000Z",
+      "updatedAt": "2026-05-09T13:00:00.000Z"
     },
     {
-      "id": "4",
-      "orderId": 1035,
-      "userId": 2,
+      "id": 4,
+      "orderId": 6,
+      "userId": 3,
       "type": "PICKUP",
       "status": "ASSIGNED",
-      "address": "Jr. Las Flores 77, San Isidro",
-      "scheduledDate": "2026-05-11T14:00:00.000Z",
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledDate": "2026-05-13T09:00:00.000Z",
       "driverName": "Marco Ríos",
       "driverPhone": "987000333",
       "notes": "Departamento 302",
-      "createdAt": "2026-05-10T08:00:00.000Z",
-      "updatedAt": "2026-05-11T08:00:00.000Z"
+      "createdAt": "2026-05-12T07:30:00.000Z",
+      "updatedAt": "2026-05-12T08:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "orderId": 7,
+      "userId": 4,
+      "type": "PICKUP",
+      "status": "PICKED_UP",
+      "address": "Calle Monte Rosa 220, Surco",
+      "scheduledDate": "2026-05-11T16:00:00.000Z",
+      "driverName": "Ana Flores",
+      "driverPhone": "987000444",
+      "notes": "Ropa delicada",
+      "createdAt": "2026-05-10T14:00:00.000Z",
+      "updatedAt": "2026-05-11T10:30:00.000Z"
+    },
+    {
+      "id": 6,
+      "orderId": 8,
+      "userId": 3,
+      "type": "DELIVERY",
+      "status": "DELIVERED",
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledDate": "2026-05-08T10:00:00.000Z",
+      "driverName": "Luis Gómez",
+      "driverPhone": "987000111",
+      "notes": null,
+      "createdAt": "2026-05-07T09:00:00.000Z",
+      "updatedAt": "2026-05-08T15:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "orderId": 9,
+      "userId": 2,
+      "type": "PICKUP",
+      "status": "PENDING",
+      "address": "Av. Primavera 456, Surco",
+      "scheduledDate": "2026-05-14T11:00:00.000Z",
+      "driverName": null,
+      "driverPhone": null,
+      "notes": "Limpieza en seco",
+      "createdAt": "2026-05-12T09:30:00.000Z",
+      "updatedAt": "2026-05-12T09:30:00.000Z"
+    },
+    {
+      "id": 8,
+      "orderId": 10,
+      "userId": 4,
+      "type": "PICKUP",
+      "status": "IN_TRANSIT",
+      "address": "Calle Monte Rosa 220, Surco",
+      "scheduledDate": "2026-05-10T08:00:00.000Z",
+      "driverName": "Marco Ríos",
+      "driverPhone": "987000333",
+      "notes": null,
+      "createdAt": "2026-05-09T20:00:00.000Z",
+      "updatedAt": "2026-05-10T08:30:00.000Z"
+    },
+    {
+      "id": 9,
+      "orderId": 11,
+      "userId": 2,
+      "type": "DELIVERY",
+      "status": "DELIVERED",
+      "address": "Calle Los Pinos 123, Miraflores",
+      "scheduledDate": "2026-05-05T10:00:00.000Z",
+      "driverName": "Rosa Quispe",
+      "driverPhone": "987000222",
+      "notes": null,
+      "createdAt": "2026-05-04T10:00:00.000Z",
+      "updatedAt": "2026-05-05T14:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "orderId": 12,
+      "userId": 3,
+      "type": "PICKUP",
+      "status": "PENDING",
+      "address": "Av. Javier Prado 1500, San Isidro",
+      "scheduledDate": "2026-05-14T15:00:00.000Z",
+      "driverName": null,
+      "driverPhone": null,
+      "notes": "Evento corporativo el viernes",
+      "createdAt": "2026-05-12T10:00:00.000Z",
+      "updatedAt": "2026-05-12T10:00:00.000Z"
     }
   ],
   "notifications": [
     {
-      "id": "1",
+      "id": 1,
       "userId": 2,
       "title": "Tu pedido fue recibido",
-      "message": "Recibimos tu pedido #1042. Pronto programaremos el recojo en tu domicilio.",
+      "message": "Recibimos tu pedido #1. Pronto programaremos el recojo en tu domicilio.",
       "type": "ORDER",
       "priority": "MEDIUM",
       "isRead": false,
-      "createdAt": "2026-05-10T22:45:00.000Z",
-      "link": "/orders/1042"
+      "createdAt": "2026-05-12T08:00:00.000Z",
+      "link": "/orders"
     },
     {
-      "id": "2",
+      "id": 2,
       "userId": 2,
       "title": "Tu repartidor está en camino",
       "message": "Luis G. llegará a tu dirección en aproximadamente 15 minutos para recoger tu ropa.",
       "type": "LOGISTICS",
       "priority": "HIGH",
       "isRead": false,
-      "createdAt": "2026-05-10T21:30:00.000Z",
-      "link": "/orders/1042/tracking"
+      "createdAt": "2026-05-12T09:30:00.000Z",
+      "link": "/orders"
     },
     {
-      "id": "3",
+      "id": 3,
       "userId": 2,
-      "title": "Pedido #1039 listo para entrega",
+      "title": "Pedido #2 listo para entrega",
       "message": "Tu ropa fue lavada, secada y empaquetada. La entregaremos hoy entre 6pm y 8pm.",
       "type": "ORDER",
       "priority": "MEDIUM",
       "isRead": false,
-      "createdAt": "2026-05-10T18:12:00.000Z"
+      "createdAt": "2026-05-11T15:00:00.000Z"
     },
     {
-      "id": "4",
+      "id": 4,
       "userId": 2,
       "title": "20% de descuento en tu próximo pedido",
       "message": "Por ser cliente frecuente, disfruta de un 20% de descuento usando el código GRACIAS20.",
@@ -256,27 +551,27 @@
       "createdAt": "2026-05-10T13:00:00.000Z"
     },
     {
-      "id": "5",
+      "id": 5,
       "userId": 2,
       "title": "Pago confirmado",
-      "message": "Tu pago de S/ 48.50 por el pedido #1037 fue procesado correctamente.",
+      "message": "Tu pago de S/ 25.00 por el pedido #4 fue procesado correctamente.",
       "type": "BILLING",
       "priority": "LOW",
       "isRead": true,
-      "createdAt": "2026-05-09T19:20:00.000Z"
+      "createdAt": "2026-05-09T13:00:00.000Z"
     },
     {
-      "id": "6",
+      "id": 6,
       "userId": 2,
-      "title": "Pedido #1037 entregado",
+      "title": "Pedido #4 entregado",
       "message": "Esperamos que disfrutes tu ropa limpia. ¿Nos cuentas qué tal estuvo?",
       "type": "ORDER",
       "priority": "LOW",
       "isRead": true,
-      "createdAt": "2026-05-09T17:05:00.000Z"
+      "createdAt": "2026-05-09T13:05:00.000Z"
     },
     {
-      "id": "7",
+      "id": 7,
       "userId": 2,
       "title": "Mantenimiento programado",
       "message": "El próximo domingo realizaremos mantenimiento entre 2am y 4am. La app podría estar lenta.",
@@ -286,18 +581,18 @@
       "createdAt": "2026-05-08T10:00:00.000Z"
     },
     {
-      "id": "8",
+      "id": 8,
       "userId": 1,
       "title": "Nueva orden recibida",
-      "message": "Pedido #1042 ingresó al sistema. Cliente: Andrea García. Total: S/ 62.00.",
+      "message": "Pedido #1 ingresó al sistema. Cliente: Andrea García. Total: S/ 49.50.",
       "type": "ORDER",
       "priority": "MEDIUM",
       "isRead": false,
-      "createdAt": "2026-05-10T22:46:00.000Z",
-      "link": "/admin/orders/1042"
+      "createdAt": "2026-05-12T08:01:00.000Z",
+      "link": "/admin/orders"
     },
     {
-      "id": "9",
+      "id": 9,
       "userId": 1,
       "title": "Inventario bajo: detergente líquido",
       "message": "Quedan 8 unidades de detergente líquido (5L). Te recomendamos reabastecer.",
@@ -308,7 +603,7 @@
       "link": "/admin/inventory"
     },
     {
-      "id": "10",
+      "id": 10,
       "userId": 1,
       "title": "Ruta optimizada disponible",
       "message": "El motor de IA generó una ruta más eficiente para los recojos vespertinos. Ahorro estimado: 22%.",
@@ -319,17 +614,17 @@
       "link": "/admin/logistics"
     },
     {
-      "id": "11",
+      "id": 11,
       "userId": 1,
       "title": "Pago recibido",
-      "message": "Se confirmó el pago de S/ 48.50 del pedido #1037 (Andrea García).",
+      "message": "Se confirmó el pago de S/ 25.00 del pedido #4 (Andrea García).",
       "type": "BILLING",
       "priority": "LOW",
       "isRead": true,
-      "createdAt": "2026-05-09T19:20:30.000Z"
+      "createdAt": "2026-05-09T13:01:00.000Z"
     },
     {
-      "id": "12",
+      "id": 12,
       "userId": 1,
       "title": "Reporte semanal disponible",
       "message": "El reporte operativo de la semana 19 ya está listo para revisión.",
@@ -337,6 +632,48 @@
       "priority": "LOW",
       "isRead": true,
       "createdAt": "2026-05-08T08:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "title": "Nuevo pedido #6 confirmado",
+      "message": "Pedido #6 de Luis Martínez ingresó al sistema. Total: S/ 60.50.",
+      "type": "ORDER",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-12T07:01:00.000Z",
+      "link": "/admin/orders"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "title": "Pedido #7 recogido",
+      "message": "Ana Flores recogió el pedido #7 de Sofía Torres. En camino a la lavandería.",
+      "type": "LOGISTICS",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-11T10:30:00.000Z",
+      "link": "/admin/logistics"
+    },
+    {
+      "id": 15,
+      "userId": 3,
+      "title": "Tu pedido #6 fue confirmado",
+      "message": "Confirmamos tu pedido #6. El recojo está programado para mañana a las 9am.",
+      "type": "ORDER",
+      "priority": "MEDIUM",
+      "isRead": false,
+      "createdAt": "2026-05-12T07:30:00.000Z"
+    },
+    {
+      "id": 16,
+      "userId": 4,
+      "title": "Tu ropa está siendo lavada",
+      "message": "El pedido #7 ingresó a la lavandería. Estará listo en aproximadamente 4 horas.",
+      "type": "ORDER",
+      "priority": "LOW",
+      "isRead": false,
+      "createdAt": "2026-05-11T11:00:00.000Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

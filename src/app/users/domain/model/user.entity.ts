@@ -1,6 +1,8 @@
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
+
 export type UserRole = 'ADMIN' | 'CLIENT';
 
-export class User {
+export class User implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly email: string,

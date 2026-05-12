@@ -1,6 +1,8 @@
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
+
 export type TransactionStatus = 'COMPLETED' | 'PENDING' | 'FAILED';
 
-export class Transaction {
+export class Transaction implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly subscriptionId: number,

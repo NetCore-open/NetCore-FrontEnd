@@ -1,6 +1,7 @@
+import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-response';
 import { DeliveryStatus, DeliveryType } from '../domain/model/delivery.entity';
 
-export interface DeliveryResponse {
+export interface DeliveryResource extends BaseResource {
   id: number;
   orderId: number;
   userId: number;
@@ -13,4 +14,8 @@ export interface DeliveryResponse {
   notes: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface DeliveriesResponse extends BaseResponse {
+  deliveries: DeliveryResource[];
 }

@@ -1,6 +1,9 @@
+
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
+
 export type SubscriptionStatus = 'ACTIVE' | 'CANCELLED' | 'EXPIRED';
 
-export class Subscription {
+export class Subscription implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly planId: number,

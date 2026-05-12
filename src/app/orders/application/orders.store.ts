@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Order, OrderStatus } from '../domain/model/order.entity';
-import { OrdersApiService } from '../infrastructure/orders-api.service';
+import { OrdersApi } from '../infrastructure/orders-api';
 import { UsersStore } from '../../users/application/users.store';
 import { CreateOrderCommand } from '../domain/model/create-order.command';
 import { UpdateOrderStatusCommand } from '../domain/model/update-order-status.command';
@@ -9,7 +9,7 @@ export type OrderFilter = 'ALL' | OrderStatus;
 
 @Injectable({ providedIn: 'root' })
 export class OrdersStore {
-  private readonly api = inject(OrdersApiService);
+  private readonly api = inject(OrdersApi);
   private readonly usersStore = inject(UsersStore);
 
   private readonly _orders = signal<Order[]>([]);

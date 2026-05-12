@@ -1,8 +1,10 @@
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
+
 export type NotificationType = 'ORDER' | 'LOGISTICS' | 'BILLING' | 'SYSTEM' | 'PROMO';
 
 export type NotificationPriority = 'LOW' | 'MEDIUM' | 'HIGH';
 
-export class Notification {
+export class Notification implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly userId: number,

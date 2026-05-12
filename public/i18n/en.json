@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "notifications": "Notifications",
+    "orders": "My orders",
+    "inventory": "Inventory",
+    "admin-orders": "Orders",
+    "logistics": "Logistics",
+    "plans": "Plans",
+    "subscriptions": "Subscriptions"
+  },
+  "sidebar": {
+    "tagline": "Digital laundry",
+    "admin": "Administrator",
+    "client": "Client",
+    "logout": "Log out"
+  },
+  "orders": {
+    "title": "Orders",
+    "subtitle": "Order management and tracking",
+    "pending": "Pending",
+    "in-process": "In process",
+    "ready": "Ready",
+    "revenue": "Revenue",
+    "loading": "Loading orders...",
+    "empty": "No orders for this filter.",
+    "id": "ID",
+    "client": "Client",
+    "address": "Address",
+    "items": "Items",
+    "total": "Total",
+    "pickup": "Pickup",
+    "status": "Status",
+    "actions": "Actions",
+    "advance": "Advance",
+    "cancel": "Cancel",
+    "filter": {
+      "all": "All",
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "picked-up": "Picked up",
+      "in-process": "In process",
+      "ready": "Ready",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "status-label": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "picked-up": "Picked up",
+      "in-process": "In process",
+      "ready": "Ready",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
+  "inventory": {
+    "title": "Inventory",
+    "subtitle": "Supply and material control",
+    "total": "Total supplies",
+    "total-hint": "registered products",
+    "ok": "Normal stock",
+    "ok-hint": "products at optimal level",
+    "low": "Low stock",
+    "low-hint": "need restocking",
+    "product": "Product",
+    "category": "Category",
+    "stock": "Current stock",
+    "min": "Minimum",
+    "level": "Level",
+    "status": "Status",
+    "restocked": "Last restocked",
+    "filter-all": "All",
+    "status-ok": "Normal",
+    "status-low": "Low stock",
+    "status-critical": "Out of stock"
+  },
+  "notifications": {
+    "title": "Notification center",
+    "subtitle": "Stay up to date with your alerts",
+    "mark-all": "Mark all as read",
+    "empty": "You have no notifications.",
+    "filter": {
+      "all": "All",
+      "unread": "Unread",
+      "order": "Orders",
+      "logistics": "Logistics",
+      "billing": "Billing",
+      "system": "System",
+      "promo": "Promotions"
+    }
+  },
+  "login": {
+    "title": "Sign in",
+    "subtitle": "Welcome to CleanWave",
+    "email": "Email address",
+    "password": "Password",
+    "submit": "Sign in",
+    "loading": "Signing in...",
+    "no-account": "Don't have an account?",
+    "register": "Register"
+  }
+}

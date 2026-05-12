@@ -1,0 +1,205 @@
+.inventory-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.inv-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--cw-text);
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--cw-text-muted);
+  margin: 0;
+}
+
+/* KPIs */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.kpi {
+  background: var(--cw-surface);
+  border: 1px solid var(--cw-border);
+  border-radius: var(--cw-radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kpi--alert {
+  border-color: #f39c1240;
+  background: #fffbf0;
+}
+
+.kpi__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi__icon--blue   { background: rgba(52,152,219,0.12); color: var(--cw-primary); }
+.kpi__icon--green  { background: rgba(39,174,96,0.12);  color: var(--cw-success); }
+.kpi__icon--orange { background: rgba(243,156,18,0.12); color: var(--cw-warning); }
+
+.kpi__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi__label {
+  font-size: 0.8rem;
+  color: var(--cw-text-muted);
+  margin-bottom: 2px;
+}
+
+.kpi__value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cw-text);
+  line-height: 1;
+}
+
+.kpi__delta {
+  font-size: 0.75rem;
+  color: var(--cw-text-muted);
+  margin-top: 2px;
+}
+
+/* Filters */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--cw-border);
+  background: var(--cw-surface);
+  color: var(--cw-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-btn:hover  { background: var(--cw-bg); }
+.filter-btn.active { background: var(--cw-text); color: #fff; border-color: var(--cw-text); }
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--cw-radius-md);
+  border: 1px solid var(--cw-border);
+  background: var(--cw-surface);
+}
+
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.inv-table thead tr {
+  background: var(--cw-bg);
+  border-bottom: 1px solid var(--cw-border);
+}
+
+.inv-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--cw-text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.inv-table tbody tr {
+  border-bottom: 1px solid var(--cw-border);
+  transition: background 0.1s;
+}
+
+.inv-table tbody tr:last-child { border-bottom: none; }
+.inv-table tbody tr:hover { background: var(--cw-bg); }
+.inv-table tbody tr.row--alert { background: #fffbf0; }
+.inv-table tbody tr.row--alert:hover { background: #fff8e1; }
+
+.inv-table td {
+  padding: 0.85rem 1rem;
+  color: var(--cw-text);
+  vertical-align: middle;
+}
+
+.name-cell { font-weight: 600; }
+.muted { color: var(--cw-text-muted); }
+
+.stock-cell strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Category tag */
+.category-tag {
+  background: var(--cw-primary-light);
+  color: var(--cw-primary-dark);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Progress bar */
+.bar-cell { min-width: 120px; }
+
+.bar-track {
+  height: 8px;
+  background: var(--cw-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.bar-fill--ok       { background: var(--cw-success); }
+.bar-fill--low      { background: var(--cw-warning); }
+.bar-fill--critical { background: var(--cw-danger); }
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge--ok       { background: #d1fae5; color: #065f46; }
+.status-badge--low      { background: #fef3c7; color: #92400e; }
+.status-badge--critical { background: #fee2e2; color: #991b1b; }

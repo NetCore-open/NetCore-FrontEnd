@@ -1,6 +1,7 @@
+import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-response';
 import { NotificationPriority, NotificationType } from '../domain/model/notification.entity';
 
-export interface NotificationResponse {
+export interface NotificationResource extends BaseResource {
   id: number;
   userId: number;
   title: string;
@@ -10,4 +11,8 @@ export interface NotificationResponse {
   isRead: boolean;
   createdAt: string;
   link?: string;
+}
+
+export interface NotificationsResponse extends BaseResponse {
+  notifications: NotificationResource[];
 }

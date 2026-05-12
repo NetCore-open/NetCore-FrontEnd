@@ -2,11 +2,11 @@ import { inject, Injectable, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserRole } from '../domain/model/user.entity';
 import { SignInCommand } from '../domain/model/sign-in.command';
-import { UsersApiService } from '../infrastructure/users-api.service';
+import { UsersApi } from '../infrastructure/users-api';
 
 @Injectable({ providedIn: 'root' })
 export class UsersStore {
-  private api = inject(UsersApiService);
+  private api = inject(UsersApi);
   private router = inject(Router);
 
   // --- Estado Privado ---
@@ -25,32 +25,18 @@ export class UsersStore {
     this._error.set(null);
 
     this.api.signIn(command).subscribe({
-      next: (users: any[]) => { // ¡Ahora recibimos un array de json-server!
-
-        // Si el array trae algo, significa que las credenciales son correctas
+      next: (users: User[]) => {
         if (users && users.length > 0) {
-          const userData = users[0]; // Extraemos el primer usuario de la lista
-
-          const userEntity = new User(
-            userData.id,
-            userData.email,
-            userData.firstName,
-            userData.lastName,
-            userData.role as UserRole
-          );
-
+          const userEntity = users[0];
           this._user.set(userEntity);
-          // Como json-server básico no da token, le inventamos uno para engañar al interceptor
           localStorage.setItem('token', 'fake-jwt-token-cleanwave');
 
-          // Redirección según rol (Carlos vs Andrea)
           if (userEntity.role === 'ADMIN') {
             this.router.navigate(['/admin/dashboard']);
           } else {
             this.router.navigate(['/dashboard']);
           }
         } else {
-          // Si el array viene vacío, no encontró a nadie
           this._error.set('Credenciales inválidas');
         }
 

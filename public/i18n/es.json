@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "notifications": "Notificaciones",
+    "orders": "Mis pedidos",
+    "inventory": "Inventario",
+    "admin-orders": "Pedidos",
+    "logistics": "Logística",
+    "plans": "Planes",
+    "subscriptions": "Suscripciones"
+  },
+  "sidebar": {
+    "tagline": "Lavandería digital",
+    "admin": "Administrador",
+    "client": "Cliente",
+    "logout": "Cerrar sesión"
+  },
+  "orders": {
+    "title": "Pedidos",
+    "subtitle": "Gestión y seguimiento de pedidos",
+    "pending": "Pendientes",
+    "in-process": "En proceso",
+    "ready": "Listos",
+    "revenue": "Ingresos",
+    "loading": "Cargando pedidos...",
+    "empty": "No hay pedidos para este filtro.",
+    "id": "ID",
+    "client": "Cliente",
+    "address": "Dirección",
+    "items": "Prendas",
+    "total": "Total",
+    "pickup": "Recojo",
+    "status": "Estado",
+    "actions": "Acciones",
+    "advance": "Avanzar",
+    "cancel": "Cancelar",
+    "filter": {
+      "all": "Todos",
+      "pending": "Pendientes",
+      "confirmed": "Confirmados",
+      "picked-up": "Recogidos",
+      "in-process": "En proceso",
+      "ready": "Listos",
+      "delivered": "Entregados",
+      "cancelled": "Cancelados"
+    },
+    "status-label": {
+      "pending": "Pendiente",
+      "confirmed": "Confirmado",
+      "picked-up": "Recogido",
+      "in-process": "En proceso",
+      "ready": "Listo",
+      "delivered": "Entregado",
+      "cancelled": "Cancelado"
+    }
+  },
+  "inventory": {
+    "title": "Inventario",
+    "subtitle": "Control de insumos y materiales de la lavandería",
+    "total": "Total de insumos",
+    "total-hint": "productos registrados",
+    "ok": "Stock normal",
+    "ok-hint": "productos en nivel óptimo",
+    "low": "Stock bajo",
+    "low-hint": "requieren reabastecimiento",
+    "product": "Producto",
+    "category": "Categoría",
+    "stock": "Stock actual",
+    "min": "Mínimo",
+    "level": "Nivel",
+    "status": "Estado",
+    "restocked": "Último reabastecimiento",
+    "filter-all": "Todos",
+    "status-ok": "Normal",
+    "status-low": "Stock bajo",
+    "status-critical": "Sin stock"
+  },
+  "notifications": {
+    "title": "Centro de notificaciones",
+    "subtitle": "Mantente al día con tus alertas",
+    "mark-all": "Marcar todas como leídas",
+    "empty": "No tienes notificaciones.",
+    "filter": {
+      "all": "Todas",
+      "unread": "No leídas",
+      "order": "Pedidos",
+      "logistics": "Logística",
+      "billing": "Facturación",
+      "system": "Sistema",
+      "promo": "Promociones"
+    }
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "subtitle": "Bienvenido a CleanWave",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "submit": "Ingresar",
+    "loading": "Ingresando...",
+    "no-account": "¿No tienes cuenta?",
+    "register": "Regístrate"
+  }
+}

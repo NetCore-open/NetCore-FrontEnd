@@ -1,19 +1,17 @@
 import { inject, Injectable, signal, computed } from '@angular/core';
-import { Plan, PlanType } from '../domain/model/plan.entity';
-import { Subscription, SubscriptionStatus } from '../domain/model/subscription.entity';
+import { Plan } from '../domain/model/plan.entity';
+import { Subscription } from '../domain/model/subscription.entity';
 import { CreateSubscriptionCommand } from '../domain/model/create-subscription.command';
-import { BillingApiService } from '../infrastructure/billing-api.service';
+import { BillingApi } from '../infrastructure/billing-api';
 
 @Injectable({ providedIn: 'root' })
 export class BillingStore {
-  private api = inject(BillingApiService);
-
+  private api = inject(BillingApi);
 
   private readonly _plans = signal<Plan[]>([]);
   private readonly _subscriptions = signal<Subscription[]>([]);
   private readonly _loading = signal<boolean>(false);
   private readonly _error = signal<string | null>(null);
-
 
   readonly plans = this._plans.asReadonly();
   readonly subscriptions = this._subscriptions.asReadonly();
@@ -28,11 +26,7 @@ export class BillingStore {
     this._error.set(null);
 
     this.api.getPlans().subscribe({
-      next: (data: any[]) => {
-        const plans = data.map(p => new Plan(
-          p.id, p.name, p.price, p.type as PlanType,
-          p.billingPeriod, p.laundryFeatures, p.clientFeatures, p.recommended
-        ));
+      next: (plans) => {
         this._plans.set(plans);
         this._loading.set(false);
       },
@@ -49,11 +43,7 @@ export class BillingStore {
     this._error.set(null);
 
     this.api.getSubscriptionsByLaundry(laundryId).subscribe({
-      next: (data: any[]) => {
-        const subs = data.map(s => new Subscription(
-          s.id, s.planId, s.laundryId,
-          s.status as SubscriptionStatus, s.startDate, s.endDate
-        ));
+      next: (subs) => {
         this._subscriptions.set(subs);
         this._loading.set(false);
       },
@@ -69,18 +59,8 @@ export class BillingStore {
     this._loading.set(true);
     this._error.set(null);
 
-    const body = {
-      planId: command.planId,
-      laundryId: command.laundryId,
-      status: 'ACTIVE',
-      startDate: new Date().toISOString().split('T')[0],
-      endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
-        .toISOString().split('T')[0]
-    };
-
-    this.api.createSubscription(body).subscribe({
+    this.api.createSubscription(command).subscribe({
       next: () => {
-
         this.loadSubscriptions(command.laundryId);
       },
       error: (err) => {

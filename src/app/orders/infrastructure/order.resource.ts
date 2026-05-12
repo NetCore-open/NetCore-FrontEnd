@@ -1,6 +1,7 @@
+import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-response';
 import { OrderStatus } from '../domain/model/order.entity';
 
-export interface OrderItemResponse {
+export interface OrderItemResource {
   id: number;
   orderId: number;
   garmentType: string;
@@ -8,15 +9,19 @@ export interface OrderItemResponse {
   unitPrice: number;
 }
 
-export interface OrderResponse {
+export interface OrderResource extends BaseResource {
   id: number;
   userId: number;
   laundryId: number;
   status: OrderStatus;
-  items: OrderItemResponse[];
+  items: OrderItemResource[];
   address: string;
   scheduledPickup: string;
   notes: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface OrdersResponse extends BaseResponse {
+  orders: OrderResource[];
 }

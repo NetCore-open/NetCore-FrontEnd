@@ -1,0 +1,95 @@
+<div class="inventory-container">
+
+  <!-- Header -->
+  <div class="inv-header">
+    <div>
+      <h1>Inventario</h1>
+      <p class="subtitle">Control de insumos y materiales de la lavandería</p>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi__icon kpi__icon--blue"><app-icon name="box"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Total de insumos</span>
+        <span class="kpi__value">{{ totalItems }}</span>
+        <span class="kpi__delta">productos registrados</span>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__icon kpi__icon--green"><app-icon name="check-circle"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Stock normal</span>
+        <span class="kpi__value">{{ okCount }}</span>
+        <span class="kpi__delta">productos en nivel óptimo</span>
+      </div>
+    </div>
+    <div class="kpi kpi--alert">
+      <div class="kpi__icon kpi__icon--orange"><app-icon name="alert-triangle"></app-icon></div>
+      <div class="kpi__body">
+        <span class="kpi__label">Stock bajo</span>
+        <span class="kpi__value">{{ lowStockCount }}</span>
+        <span class="kpi__delta">requieren reabastecimiento</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    @for (cat of categories; track cat) {
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === cat"
+        (click)="setCategory(cat)">
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+    <table class="inv-table">
+      <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Stock actual</th>
+        <th>Mínimo</th>
+        <th>Nivel</th>
+        <th>Estado</th>
+        <th>Último reabastecimiento</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (item of filteredItems; track item.id) {
+          <tr [class.row--alert]="stockStatus(item) !== 'ok'">
+            <td class="name-cell">{{ item.name }}</td>
+            <td><span class="category-tag">{{ item.category }}</span></td>
+            <td class="stock-cell">
+              <strong>{{ item.stock }}</strong> {{ item.unit }}
+            </td>
+            <td class="muted">{{ item.minStock }} {{ item.unit }}</td>
+            <td class="bar-cell">
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  [class]="'bar-fill--' + stockStatus(item)"
+                  [style.width.%]="stockPercent(item)">
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="status-badge" [class]="'status-badge--' + stockStatus(item)">
+                {{ stockLabel(item) }}
+              </span>
+            </td>
+            <td class="muted">{{ item.lastRestocked | date:'dd/MM/yyyy' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</div>

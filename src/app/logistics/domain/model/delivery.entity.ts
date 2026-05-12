@@ -1,7 +1,9 @@
+import { BaseEntity } from '../../../shared/domain/model/base-entity';
+
 export type DeliveryStatus = 'PENDING' | 'ASSIGNED' | 'PICKED_UP' | 'IN_TRANSIT' | 'DELIVERED' | 'FAILED';
 export type DeliveryType = 'PICKUP' | 'DELIVERY';
 
-export class Delivery {
+export class Delivery implements BaseEntity {
   constructor(
     public readonly id: number,
     public readonly orderId: number,

@@ -1,14 +1,14 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { Notification, NotificationType } from '../domain/model/notification.entity';
-import { NotificationsApiService } from '../infrastructure/notifications-api.service';
+import { NotificationsApi } from '../infrastructure/notifications-api';
 import { UsersStore } from '../../users/application/users.store';
 
 export type NotificationFilter = 'ALL' | 'UNREAD' | NotificationType;
 
 @Injectable({ providedIn: 'root' })
 export class NotificationsStore {
-  private readonly api = inject(NotificationsApiService);
+  private readonly api = inject(NotificationsApi);
   private readonly usersStore = inject(UsersStore);
 
   private readonly _notifications = signal<Notification[]>([]);
@@ -43,11 +43,11 @@ export class NotificationsStore {
     this._error.set(null);
 
     this.api.getByUser(user.id).subscribe({
-      next: (items: any) => {
+      next: (items) => {
         this._notifications.set(items);
         this._loading.set(false);
       },
-      error: (err: any) => {
+      error: (err) => {
         this._error.set('No se pudieron cargar las notificaciones');
         this._loading.set(false);
         console.error('Error loading notifications:', err);
@@ -68,7 +68,7 @@ export class NotificationsStore {
     );
 
     this.api.markAsRead(id).subscribe({
-      error: (err: any) => {
+      error: (err) => {
         console.error('Error marking notification as read:', err);
         this.loadForCurrentUser();
       }
@@ -82,7 +82,7 @@ export class NotificationsStore {
     this._notifications.update((list: Notification[]) => list.map((n) => (n.isRead ? n : n.markAsRead())));
 
     forkJoin(unread.map((n: Notification) => this.api.markAsRead(n.id))).subscribe({
-      error: (err: any) => {
+      error: (err) => {
         console.error('Error marking all as read:', err);
         this.loadForCurrentUser();
       }
@@ -94,7 +94,7 @@ export class NotificationsStore {
     this._notifications.update((list: Notification[]) => list.filter((n) => n.id !== id));
 
     this.api.delete(id).subscribe({
-      error: (err: any) => {
+      error: (err) => {
         console.error('Error deleting notification:', err);
         this._notifications.set(previous);
       }

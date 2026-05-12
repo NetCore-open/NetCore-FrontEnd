@@ -3,7 +3,7 @@
     <div class="sidebar__logo">CW</div>
     <div class="sidebar__brand-text">
       <span class="sidebar__brand-name">CleanWave</span>
-      <span class="sidebar__brand-tagline">Lavandería digital</span>
+      <span class="sidebar__brand-tagline">{{ 'sidebar.tagline' | translate }}</span>
     </div>
   </div>
 
@@ -14,13 +14,24 @@
         routerLinkActive="sidebar__link--active"
         class="sidebar__link">
         <app-icon [name]="item.icon" class="sidebar__link-icon"></app-icon>
-        <span class="sidebar__link-label">{{ item.label }}</span>
-        @if (item.showBadge && unreadCount() > 0) {
-          <span class="sidebar__badge">{{ unreadCount() > 99 ? '99+' : unreadCount() }}</span>
-        }
+        <span class="sidebar__link-label">{{ 'nav.' + item.i18nKey | translate }}</span>
+        <span class="sidebar__badge" *ngIf="item.showBadge && unreadCount() > 0">
+          {{ unreadCount() > 99 ? '99+' : unreadCount() }}
+        </span>
       </a>
     }
   </nav>
+
+  <div class="sidebar__lang">
+    <button
+      class="lang-btn"
+      [class.lang-btn--active]="currentLang() === 'es'"
+      (click)="switchLang('es')">ES</button>
+    <button
+      class="lang-btn"
+      [class.lang-btn--active]="currentLang() === 'en'"
+      (click)="switchLang('en')">EN</button>
+  </div>
 
   @if (currentUser(); as user) {
     <div class="sidebar__footer">
@@ -31,7 +42,7 @@
           <span class="sidebar__user-role">{{ roleLabel() }}</span>
         </div>
       </div>
-      <button class="sidebar__logout" type="button" (click)="logout()" title="Cerrar sesión">
+      <button class="sidebar__logout" type="button" (click)="logout()" [title]="'sidebar.logout' | translate">
         <app-icon name="logout"></app-icon>
       </button>
     </div>

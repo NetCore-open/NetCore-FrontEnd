@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Delivery, DeliveryStatus, DeliveryType } from '../domain/model/delivery.entity';
-import { LogisticsApiService } from '../infrastructure/logistics-api.service';
+import { LogisticsApi } from '../infrastructure/logistics-api';
 import { UsersStore } from '../../users/application/users.store';
 import { CreateDeliveryCommand } from '../domain/model/create-delivery.command';
 import { UpdateDeliveryStatusCommand } from '../domain/model/update-delivery-status.command';
@@ -9,7 +9,7 @@ export type DeliveryFilter = 'ALL' | DeliveryStatus | DeliveryType;
 
 @Injectable({ providedIn: 'root' })
 export class LogisticsStore {
-  private readonly api = inject(LogisticsApiService);
+  private readonly api = inject(LogisticsApi);
   private readonly usersStore = inject(UsersStore);
 
   private readonly _deliveries = signal<Delivery[]>([]);
