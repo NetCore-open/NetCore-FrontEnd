@@ -1,0 +1,215 @@
+.orders-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #111827);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #6b7280);
+  margin: 0.25rem 0 0;
+}
+
+.header-stats {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  min-width: 80px;
+}
+
+.stat-badge.pending    { background: #fef3c7; color: #92400e; }
+.stat-badge.in-process { background: #dbeafe; color: #1e40af; }
+.stat-badge.ready      { background: #d1fae5; color: #065f46; }
+.stat-badge.revenue    { background: #f3e8ff; color: #6b21a8; }
+
+.stat-number {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Filters */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover  { background: #f3f4f6; }
+.filter-btn.active { background: #111827; color: #fff; border-color: #111827; }
+
+/* State messages */
+.state-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  color: #6b7280;
+  gap: 0.75rem;
+}
+
+.state-message.error { color: #dc2626; }
+.state-message.empty { color: #9ca3af; }
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #111827;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.orders-table thead tr {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.orders-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.orders-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.orders-table tbody tr:last-child { border-bottom: none; }
+.orders-table tbody tr:hover { background: #f9fafb; }
+
+.orders-table td {
+  padding: 0.75rem 1rem;
+  color: #374151;
+  vertical-align: top;
+}
+
+.id-cell    { font-weight: 600; color: #111827; }
+.total-cell { font-weight: 600; color: #111827; }
+
+.address-cell {
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Items */
+.items-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  max-width: 200px;
+}
+
+.item-tag {
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge.pending    { background: #fef3c7; color: #92400e; }
+.status-badge.confirmed  { background: #e0e7ff; color: #3730a3; }
+.status-badge.picked-up  { background: #fce7f3; color: #9d174d; }
+.status-badge.in-process { background: #dbeafe; color: #1e40af; }
+.status-badge.ready      { background: #d1fae5; color: #065f46; }
+.status-badge.delivered  { background: #d1fae5; color: #065f46; }
+.status-badge.cancelled  { background: #fee2e2; color: #991b1b; }
+
+/* Actions */
+.actions-cell {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.btn-advance,
+.btn-cancel {
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s;
+}
+
+.btn-advance { background: #111827; color: #fff; }
+.btn-cancel  { background: #fee2e2; color: #991b1b; }
+
+.btn-advance:hover,
+.btn-cancel:hover { opacity: 0.8; }
