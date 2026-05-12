@@ -2,6 +2,7 @@ import { inject, Injectable, signal, computed } from '@angular/core';
 import { Plan, PlanType } from '../domain/model/plan.entity';
 import { Subscription, SubscriptionStatus } from '../domain/model/subscription.entity';
 import { CreateSubscriptionCommand } from '../domain/model/create-subscription.command';
+import { CancelSubscriptionCommand } from '../domain/model/cancel-subscription.command';
 import { BillingApiService } from '../infrastructure/billing-api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -87,6 +88,22 @@ export class BillingStore {
         this._error.set('Error al crear la suscripción');
         this._loading.set(false);
         console.error('Error creando suscripción:', err);
+      }
+    });
+  }
+
+  cancelSubscription(command: CancelSubscriptionCommand) {
+    this._loading.set(true);
+    this._error.set(null);
+
+    this.api.cancelSubscription(command.subscriptionId).subscribe({
+      next: () => {
+        this.loadSubscriptions(command.laundryId);
+      },
+      error: (err) => {
+        this._error.set('Error al cancelar la suscripción');
+        this._loading.set(false);
+        console.error('Error cancelando suscripción:', err);
       }
     });
   }

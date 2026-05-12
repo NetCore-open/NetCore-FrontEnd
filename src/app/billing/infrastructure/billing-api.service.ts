@@ -21,6 +21,10 @@ export class BillingApiService {
     return this.http.post<any>(`${this.baseUrl}/subscriptions`, data);
   }
 
+  cancelSubscription(id: number): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/subscriptions/${id}`, { status: 'CANCELLED' });
+  }
+
   getTransactionsBySubscription(subscriptionId: number): Observable<any[]> {
     return this.http.get<any[]>(
       `${this.baseUrl}/transactions?subscriptionId=${subscriptionId}`

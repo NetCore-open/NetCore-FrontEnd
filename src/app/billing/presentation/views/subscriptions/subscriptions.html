@@ -52,6 +52,10 @@
             <span class="sub-detail__value">#{{ sub.laundryId }}</span>
           </div>
         </div>
+        <div class="sub-actions">
+          <button class="btn-outline" (click)="onChangePlan()">Cambiar Plan</button>
+          <button class="btn-cancel" (click)="onCancelSubscription(sub.id, sub.laundryId)" [disabled]="sub.status === 'CANCELLED'">Cancelar Suscripción</button>
+        </div>
       </div>
     }
   </div>
