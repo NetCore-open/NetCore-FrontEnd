@@ -1,9 +1,19 @@
-<div class="plans-container">
-  <h2>Planes de Suscripción</h2>
-  <p class="subtitle">Elige el plan que mejor se adapte a tu lavandería</p>
+<section class="page">
+  <header class="page__header">
+    <div class="page__title-block">
+      <div class="page__icon">💳</div>
+      <div>
+        <h1 class="page__title">Planes de Suscripción</h1>
+        <p class="page__subtitle">Elige el plan que mejor se adapte a tu lavandería</p>
+      </div>
+    </div>
+  </header>
 
   @if (store.isLoading()) {
-    <p class="loading">Cargando planes...</p>
+    <div class="state">
+      <div class="spinner"></div>
+      <p>Cargando planes...</p>
+    </div>
   }
 
   @if (store.error()) {
@@ -51,4 +61,4 @@
       </div>
     }
   </div>
-</div>
+</section>

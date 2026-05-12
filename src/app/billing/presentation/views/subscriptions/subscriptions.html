@@ -1,9 +1,19 @@
-<div class="subscriptions-container">
-  <h2>Mis Suscripciones</h2>
-  <p class="subtitle">Gestiona las suscripciones de tu lavandería</p>
+<section class="page">
+  <header class="page__header">
+    <div class="page__title-block">
+      <div class="page__icon">📋</div>
+      <div>
+        <h1 class="page__title">Mis Suscripciones</h1>
+        <p class="page__subtitle">Gestiona las suscripciones activas de tu lavandería</p>
+      </div>
+    </div>
+  </header>
 
   @if (store.isLoading()) {
-    <p class="loading">Cargando suscripciones...</p>
+    <div class="state">
+      <div class="spinner"></div>
+      <p>Cargando suscripciones...</p>
+    </div>
   }
 
   @if (store.error()) {
@@ -11,25 +21,38 @@
   }
 
   @if (store.subscriptions().length === 0 && !store.isLoading()) {
-    <div class="empty">
+    <div class="state">
       <span class="empty-icon">📋</span>
-      <p>No tienes suscripciones activas.</p>
+      <h3>No tienes suscripciones activas</h3>
+      <p>Explora nuestros planes y comienza hoy</p>
+      <a routerLink="/admin/plans" class="empty-cta">Ver Planes →</a>
     </div>
   }
 
-  @for (sub of store.subscriptions(); track sub.id) {
-    <div class="subscription-card">
-      <div class="sub-header">
-        <span class="plan-name">Plan #{{ sub.planId }}</span>
-        <span class="status" [class]="sub.status.toLowerCase()">
-          {{ sub.status }}
-        </span>
+  <div class="subscriptions-list">
+    @for (sub of store.subscriptions(); track sub.id) {
+      <div class="subscription-card">
+        <div class="sub-header">
+          <span class="plan-name">Plan #{{ sub.planId }}</span>
+          <span class="status" [class]="sub.status.toLowerCase()">
+            {{ sub.status }}
+          </span>
+        </div>
+        <div class="sub-details">
+          <div class="sub-detail">
+            <span class="sub-detail__label">Inicio</span>
+            <span class="sub-detail__value">{{ sub.startDate }}</span>
+          </div>
+          <div class="sub-detail">
+            <span class="sub-detail__label">Vencimiento</span>
+            <span class="sub-detail__value">{{ sub.endDate }}</span>
+          </div>
+          <div class="sub-detail">
+            <span class="sub-detail__label">Lavandería</span>
+            <span class="sub-detail__value">#{{ sub.laundryId }}</span>
+          </div>
+        </div>
       </div>
-      <div class="sub-details">
-        <p><strong>Inicio:</strong> {{ sub.startDate }}</p>
-        <p><strong>Vencimiento:</strong> {{ sub.endDate }}</p>
-        <p><strong>Lavandería:</strong> #{{ sub.laundryId }}</p>
-      </div>
-    </div>
-  }
-</div>
+    }
+  </div>
+</section>

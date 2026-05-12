@@ -44,19 +44,18 @@ export const routes: Routes = [
         component: LogisticsComponent,
         canActivate: [authGuard(['ADMIN'])]
       },
+      {
+        path: 'admin/plans',
+        component: PlansComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
+      {
+        path: 'admin/subscriptions',
+        component: SubscriptionsComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
-  },
-
-  {
-    path: 'admin/plans',
-    component: PlansComponent,
-    canActivate: [authGuard(['ADMIN'])]
-  },
-  {
-    path: 'admin/subscriptions',
-    component: SubscriptionsComponent,
-    canActivate: [authGuard(['ADMIN'])]
   },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
