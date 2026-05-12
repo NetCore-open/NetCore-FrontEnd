@@ -1,0 +1,116 @@
+<div class="orders-container">
+
+  <!-- Header -->
+  <div class="orders-header">
+    <div class="header-title">
+      <h1>Pedidos</h1>
+      <p class="subtitle">Gestión y seguimiento de pedidos</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-badge pending">
+        <span class="stat-number">{{ store.pendingCount() }}</span>
+        <span class="stat-label">Pendientes</span>
+      </div>
+      <div class="stat-badge in-process">
+        <span class="stat-number">{{ store.inProcessCount() }}</span>
+        <span class="stat-label">En proceso</span>
+      </div>
+      <div class="stat-badge ready">
+        <span class="stat-number">{{ store.readyCount() }}</span>
+        <span class="stat-label">Listos</span>
+      </div>
+      <div class="stat-badge revenue">
+        <span class="stat-number">S/ {{ store.totalRevenue() | number:'1.2-2' }}</span>
+        <span class="stat-label">Ingresos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    @for (f of filters; track f.value) {
+      <button
+        class="filter-btn"
+        [class.active]="store.filter() === f.value"
+        (click)="setFilter(f.value)">
+        {{ f.label }}
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (store.loading()) {
+    <div class="state-message">
+      <span class="spinner"></span>
+      <p>Cargando pedidos...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (store.error()) {
+    <div class="state-message error">
+      <p>{{ store.error() }}</p>
+    </div>
+  }
+
+  <!-- Empty -->
+  @if (!store.loading() && !store.error() && store.filteredOrders().length === 0) {
+    <div class="state-message empty">
+      <p>No hay pedidos para este filtro.</p>
+    </div>
+  }
+
+  <!-- Table -->
+  @if (!store.loading() && store.filteredOrders().length > 0) {
+    <div class="table-wrapper">
+      <table class="orders-table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Dirección</th>
+          <th>Prendas</th>
+          <th>Total</th>
+          <th>Recojo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (order of store.filteredOrders(); track trackById($index, order)) {
+            <tr>
+              <td class="id-cell">#{{ order.id }}</td>
+              <td>Usuario #{{ order.userId }}</td>
+              <td class="address-cell">{{ order.address }}</td>
+              <td class="items-cell">
+                @for (item of order.items; track item.id) {
+                  <span class="item-tag">{{ item.quantity }}x {{ item.garmentType }}</span>
+                }
+              </td>
+              <td class="total-cell">S/ {{ order.total | number:'1.2-2' }}</td>
+              <td>{{ order.scheduledPickup | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <span class="status-badge" [class]="statusClass(order.status)">
+                  {{ statusLabel(order.status) }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                @if (nextStatus(order)) {
+                  <button class="btn-advance" (click)="advance(order)">
+                    Avanzar
+                  </button>
+                }
+                @if (order.status !== 'DELIVERED' && order.status !== 'CANCELLED') {
+                  <button class="btn-cancel" (click)="cancel(order)">
+                    Cancelar
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+</div>
