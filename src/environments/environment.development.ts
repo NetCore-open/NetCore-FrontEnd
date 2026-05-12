@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  serverBaseUrl: 'http://localhost:3000',
+  serverBaseUrl: 'https://cleanwave-api-yd7q.onrender.com',
   apiBasePath: '',
   usersEndpointPath: '/users',
   ordersEndpointPath: '/orders',

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  serverBaseUrl: 'http://localhost:3000',
-  apiBasePath: '/api/v1',
+  serverBaseUrl: 'https://cleanwave-api-yd7q.onrender.com',
+  apiBasePath: '',
   usersEndpointPath: '/users',
   ordersEndpointPath: '/orders',
   logisticsEndpointPath: '/deliveries',
@@ -9,5 +9,5 @@ export const environment = {
   plansEndpointPath: '/plans',
   subscriptionsEndpointPath: '/subscriptions',
   transactionsEndpointPath: '/transactions',
-  signInEndpointPath: '/authentication/sign-in',
+  signInEndpointPath: '/users',
 };
