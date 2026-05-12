@@ -136,6 +136,30 @@
       "startDate": "2026-05-11",
       "endDate": "2026-06-10",
       "id": "y702rUS4RLY"
+    },
+    {
+      "planId": "1",
+      "laundryId": 1,
+      "status": "ACTIVE",
+      "startDate": "2026-05-11",
+      "endDate": "2026-06-10",
+      "id": "nVf-givKo0k"
+    },
+    {
+      "planId": "2",
+      "laundryId": 1,
+      "status": "ACTIVE",
+      "startDate": "2026-05-11",
+      "endDate": "2026-06-10",
+      "id": "ZHgf1Xohy6Y"
+    },
+    {
+      "planId": "3",
+      "laundryId": 1,
+      "status": "ACTIVE",
+      "startDate": "2026-05-11",
+      "endDate": "2026-06-10",
+      "id": "RS_5pdRlHfE"
     }
   ],
   "transactions": [
@@ -160,28 +184,28 @@
       "orderId": 1042,
       "userId": 2,
       "type": "PICKUP",
-      "status": "IN_TRANSIT",
+      "status": "DELIVERED",
       "address": "Av. Primavera 456, Surco",
       "scheduledDate": "2026-05-11T10:00:00.000Z",
       "driverName": "Luis Gómez",
       "driverPhone": "987000111",
       "notes": "Timbre no funciona, llamar al llegar",
       "createdAt": "2026-05-10T22:45:00.000Z",
-      "updatedAt": "2026-05-11T09:30:00.000Z"
+      "updatedAt": "2026-05-12T03:39:44.602Z"
     },
     {
       "id": "2",
       "orderId": 1039,
       "userId": 2,
       "type": "DELIVERY",
-      "status": "PENDING",
+      "status": "FAILED",
       "address": "Calle Los Pinos 123, Miraflores",
       "scheduledDate": "2026-05-11T18:00:00.000Z",
       "driverName": null,
       "driverPhone": null,
       "notes": null,
       "createdAt": "2026-05-10T18:12:00.000Z",
-      "updatedAt": "2026-05-10T18:12:00.000Z"
+      "updatedAt": "2026-05-12T03:39:46.699Z"
     },
     {
       "id": "3",
@@ -202,14 +226,14 @@
       "orderId": 1035,
       "userId": 2,
       "type": "PICKUP",
-      "status": "ASSIGNED",
+      "status": "FAILED",
       "address": "Jr. Las Flores 77, San Isidro",
       "scheduledDate": "2026-05-11T14:00:00.000Z",
       "driverName": "Marco Ríos",
       "driverPhone": "987000333",
       "notes": "Departamento 302",
       "createdAt": "2026-05-10T08:00:00.000Z",
-      "updatedAt": "2026-05-11T08:00:00.000Z"
+      "updatedAt": "2026-05-12T03:39:50.353Z"
     }
   ],
   "notifications": [
@@ -286,24 +310,13 @@
       "createdAt": "2026-05-08T10:00:00.000Z"
     },
     {
-      "id": "8",
-      "userId": 1,
-      "title": "Nueva orden recibida",
-      "message": "Pedido #1042 ingresó al sistema. Cliente: Andrea García. Total: S/ 62.00.",
-      "type": "ORDER",
-      "priority": "MEDIUM",
-      "isRead": false,
-      "createdAt": "2026-05-10T22:46:00.000Z",
-      "link": "/admin/orders/1042"
-    },
-    {
       "id": "9",
       "userId": 1,
       "title": "Inventario bajo: detergente líquido",
       "message": "Quedan 8 unidades de detergente líquido (5L). Te recomendamos reabastecer.",
       "type": "SYSTEM",
       "priority": "HIGH",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2026-05-10T20:00:00.000Z",
       "link": "/admin/inventory"
     },
@@ -314,7 +327,7 @@
       "message": "El motor de IA generó una ruta más eficiente para los recojos vespertinos. Ahorro estimado: 22%.",
       "type": "LOGISTICS",
       "priority": "MEDIUM",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2026-05-10T17:30:00.000Z",
       "link": "/admin/logistics"
     },
@@ -337,6 +350,24 @@
       "priority": "LOW",
       "isRead": true,
       "createdAt": "2026-05-08T08:00:00.000Z"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "3",
+      "orderId": "o3",
+      "customerId": "cust3",
+      "laundryId": "2",
+      "status": "COMPLETED",
+      "createdAt": "2026-05-05",
+      "items": [
+        "g4",
+        "g6"
+      ],
+      "assignedDriverId": null,
+      "totalWeight": 3.1,
+      "totalPrice": 30,
+      "notes": "Lavado delicado"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

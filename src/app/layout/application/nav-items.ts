@@ -42,7 +42,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Pedidos',
-    path: '/admin/orders',
+    path: '/admin/pedidos',
     icon: 'package',
     roles: ['ADMIN']
   },

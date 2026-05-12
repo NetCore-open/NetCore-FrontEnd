@@ -1,0 +1,24 @@
+<div class="pedidos-center">
+  <h2>Pedidos</h2>
+
+  <div *ngIf="store.isLoading()" class="loading">Cargando pedidos...</div>
+
+  <div *ngIf="store.error()" class="error">{{ store.error() }}</div>
+
+  <div class="list">
+    <div *ngFor="let p of store.pedidos(); trackBy: trackById" class="card">
+      <div class="card-left">
+        <div class="id">Pedido #{{ p.id }}</div>
+        <div class="meta">Orden: {{ p.orderId }} — Cliente: {{ p.customerId }}</div>
+        <div class="meta">Lavandería: {{ p.laundryId }} • Estado: {{ p.status }}</div>
+        <div class="notes" *ngIf="p.notes">{{ p.notes }}</div>
+      </div>
+      <div class="card-right">
+        <div class="price">S/ {{ p.totalPrice }}</div>
+        <button class="btn" (click)="onMarkCompleted(p.id)" [disabled]="p.status === 'COMPLETED'">Marcar completado</button>
+        <button class="btn danger" (click)="onDelete(p.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
