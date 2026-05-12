@@ -1,4 +1,5 @@
 import { inject, Injectable, signal, computed } from '@angular/core';
+import { Router } from '@angular/router';
 import { Plan, PlanType } from '../domain/model/plan.entity';
 import { Subscription, SubscriptionStatus } from '../domain/model/subscription.entity';
 import { CreateSubscriptionCommand } from '../domain/model/create-subscription.command';
@@ -8,6 +9,7 @@ import { BillingApiService } from '../infrastructure/billing-api.service';
 @Injectable({ providedIn: 'root' })
 export class BillingStore {
   private api = inject(BillingApiService);
+  private router = inject(Router);
 
 
   private readonly _plans = signal<Plan[]>([]);
@@ -81,8 +83,8 @@ export class BillingStore {
 
     this.api.createSubscription(body).subscribe({
       next: () => {
-
         this.loadSubscriptions(command.laundryId);
+        this.router.navigate(['/admin/subscriptions']);
       },
       error: (err) => {
         this._error.set('Error al crear la suscripción');
@@ -103,7 +105,45 @@ export class BillingStore {
       error: (err) => {
         this._error.set('Error al cancelar la suscripción');
         this._loading.set(false);
-        console.error('Error cancelando suscripción:', err);
+      }
+    });
+  }
+
+  processCheckout(planId: number, laundryId: number) {
+    this._loading.set(true);
+    this._error.set(null);
+
+    const subBody = {
+      planId,
+      laundryId,
+      status: 'ACTIVE',
+      startDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+    };
+
+    this.api.createSubscription(subBody).subscribe({
+      next: (subRes: any) => {
+        const transBody = {
+          subscriptionId: subRes.id,
+          amount: 0,
+          date: new Date().toISOString().split('T')[0],
+          status: 'COMPLETED'
+        };
+
+        this.api.createTransaction(transBody).subscribe({
+          next: () => {
+            this.loadSubscriptions(laundryId);
+            this.router.navigate(['/admin/subscriptions']);
+          },
+          error: (err) => {
+            this._error.set('Error al procesar el pago');
+            this._loading.set(false);
+          }
+        });
+      },
+      error: (err) => {
+        this._error.set('Error al crear la suscripción');
+        this._loading.set(false);
       }
     });
   }

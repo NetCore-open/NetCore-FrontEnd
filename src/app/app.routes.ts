@@ -8,6 +8,7 @@ import { NotificationsCenterComponent } from './notifications/presentation/views
 import { authGuard } from './users/application/auth.guard';
 import { PlansComponent } from './billing/presentation/views/plans/plans';
 import { SubscriptionsComponent } from './billing/presentation/views/subscriptions/subscriptions';
+import { CheckoutComponent } from './billing/presentation/views/checkout/checkout';
 import { Dashboard } from './layout/views/dashboard/dashboard';
 import { LogisticsComponent } from './logistics/presentation/views/logistics/logistics';
 
@@ -47,6 +48,11 @@ export const routes: Routes = [
       {
         path: 'admin/plans',
         component: PlansComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
+      {
+        path: 'admin/checkout/:planId',
+        component: CheckoutComponent,
         canActivate: [authGuard(['ADMIN'])]
       },
       {
