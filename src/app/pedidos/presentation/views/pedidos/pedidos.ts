@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PedidosStore } from '../../../application/pedidos.store';
+import {IconComponent} from '../../../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-pedidos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './pedidos.html',
   styleUrls: ['./pedidos.css']
 })

@@ -1,5 +1,9 @@
 <div class="pedidos-center">
-  <h2>Pedidos</h2>
+
+  <div class="header">
+    <app-icon class="pm-icon" name="package"></app-icon>
+    <h2>Pedidos</h2>
+  </div>
 
   @if (store.isLoading()) {
     <div class="loading">Cargando pedidos...</div>
@@ -15,7 +19,9 @@
         <div class="card-left">
           <div class="id">Pedido #{{ p.id }}</div>
           <div class="meta">Orden: {{ p.orderId }} — Cliente: {{ p.customerId }}</div>
-          <div class="meta">Lavandería: {{ p.laundryId }} • Estado: {{ p.status }}</div>
+          <div class="meta">Lavandería: {{ p.laundryId }} •
+            <span class="chip status-{{ p.status }}">{{ p.status }}</span>
+          </div>
           @if (p.notes) {
             <div class="notes">{{ p.notes }}</div>
           }

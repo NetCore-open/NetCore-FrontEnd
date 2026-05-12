@@ -1,6 +1,24 @@
 .pedidos-center {
   padding: 20px;
 }
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.pm-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #38b6ff 0%, #4dd3a6 100%);
+  box-shadow: 0 6px 18px rgba(61,142,255,0.12);
+  color: white;
+  font-size: 22px;
+}
 .list {
   margin-top: 16px;
 }
@@ -13,6 +31,7 @@
   padding: 12px;
   margin-bottom: 12px;
   background: #fff;
+  box-shadow: 0 2px 8px rgba(20,30,60,0.04);
 }
 .card-left .id {
   font-weight: 600;
@@ -21,6 +40,20 @@
   color: #666;
   font-size: 13px;
 }
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+.status-REGISTERED { background:#e0f2ff; color:#1976d2; }
+.status-IN_PROCESS { background:#fff4e5; color:#ff8a00; }
+.status-READY_FOR_PICKUP { background:#e8fff4; color:#2e7d32; }
+.status-COMPLETED { background:#f0f7ff; color:#1565c0; }
+.status-CANCELLED { background:#fff0f0; color:#d32f2f; }
 .card-right {
   display: flex;
   flex-direction: column;

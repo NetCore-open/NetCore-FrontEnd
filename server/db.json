@@ -368,6 +368,53 @@
       "totalWeight": 3.1,
       "totalPrice": 30,
       "notes": "Lavado delicado"
+    },
+    {
+      "id": "4",
+      "orderId": "o4",
+      "customerId": "cust1",
+      "laundryId": "1",
+      "status": "REGISTERED",
+      "createdAt": "2026-05-12",
+      "items": [
+        "g1",
+        "g2"
+      ],
+      "assignedDriverId": null,
+      "totalWeight": 2.4,
+      "totalPrice": 24.5,
+      "notes": "Recojo por la mañana"
+    },
+    {
+      "id": "5",
+      "orderId": "o5",
+      "customerId": "cust2",
+      "laundryId": "2",
+      "status": "IN_PROCESS",
+      "createdAt": "2026-05-12",
+      "items": [
+        "g3"
+      ],
+      "assignedDriverId": "1",
+      "totalWeight": 1.1,
+      "totalPrice": 18,
+      "notes": null
+    },
+    {
+      "id": "6",
+      "orderId": "o6",
+      "customerId": "cust3",
+      "laundryId": "3",
+      "status": "READY_FOR_PICKUP",
+      "createdAt": "2026-05-12",
+      "items": [
+        "g1",
+        "g3"
+      ],
+      "assignedDriverId": null,
+      "totalWeight": 3.8,
+      "totalPrice": 32,
+      "notes": "Entregar después de las 5pm"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
