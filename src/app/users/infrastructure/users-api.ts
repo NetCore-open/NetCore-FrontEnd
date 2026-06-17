@@ -15,7 +15,7 @@ export class UsersApi extends BaseApi {
     this.usersEndpoint = new UsersApiEndpoint(http);
   }
 
-  signIn(command: SignInCommand): Observable<User[]> {
+  signIn(command: SignInCommand): Observable<any> {
     return this.usersEndpoint.signIn(command);
   }
 

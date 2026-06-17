@@ -12,14 +12,14 @@ export class UsersApiEndpoint extends BaseApiEndpoint<User, UserResource, UsersR
     super(http, `${environment.serverBaseUrl}${environment.usersEndpointPath}`, new UserAssembler());
   }
 
-  signIn(command: SignInCommand): Observable<User[]> {
-    return this.http.get<UserResource[]>(
-      `${this.endpointUrl}?email=${command.email}`
+  signIn(command: SignInCommand): Observable<any> {
+    return this.http.post<any>(
+      `${environment.serverBaseUrl}/authentication/sign-in`,
+      {
+        username: command.email,
+        password: command.password
+      }
     ).pipe(
-      map(resources => {
-        const match = resources.filter(r => r.password === command.password);
-        return match.map(r => this.assembler.toEntityFromResource(r));
-      }),
       catchError(this.handleError('Failed to sign in'))
     );
   }

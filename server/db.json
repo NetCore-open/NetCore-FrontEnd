@@ -146,6 +146,14 @@
       "status": "CANCELLED",
       "startDate": "2026-01-01",
       "endDate": "2026-02-01"
+    },
+    {
+      "id": 5,
+      "planId": 1,
+      "laundryId": 1,
+      "status": "ACTIVE",
+      "startDate": "2026-05-12",
+      "endDate": "2026-06-11"
     }
   ],
   "transactions": [

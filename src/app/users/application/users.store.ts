@@ -25,11 +25,18 @@ export class UsersStore {
     this._error.set(null);
 
     this.api.signIn(command).subscribe({
-      next: (users: User[]) => {
-        if (users && users.length > 0) {
-          const userEntity = users[0];
+      next: (userData: any) => {
+        if (userData && userData.token) {
+          const userEntity = new User(
+            userData.id,
+            userData.username,
+            userData.firstName || '',
+            userData.lastName || '',
+            (userData.roles && userData.roles[0]) as UserRole
+          );
+
           this._user.set(userEntity);
-          localStorage.setItem('token', 'fake-jwt-token-cleanwave');
+          localStorage.setItem('token', userData.token);
 
           if (userEntity.role === 'ADMIN') {
             this.router.navigate(['/admin/dashboard']);
@@ -43,7 +50,7 @@ export class UsersStore {
         this._loading.set(false);
       },
       error: (err) => {
-        this._error.set('Error al conectar con el servidor');
+        this._error.set('Credenciales inválidas o error de conexión');
         this._loading.set(false);
         console.error('Error de login:', err);
       }
