@@ -1,12 +1,15 @@
 import { inject, Injectable, signal, computed } from '@angular/core';
+import { Router } from '@angular/router';
 import { Plan } from '../domain/model/plan.entity';
 import { Subscription } from '../domain/model/subscription.entity';
 import { CreateSubscriptionCommand } from '../domain/model/create-subscription.command';
+import { CancelSubscriptionCommand } from '../domain/model/cancel-subscription.command';
 import { BillingApi } from '../infrastructure/billing-api';
 
 @Injectable({ providedIn: 'root' })
 export class BillingStore {
   private api = inject(BillingApi);
+  private router = inject(Router);
 
   private readonly _plans = signal<Plan[]>([]);
   private readonly _subscriptions = signal<Subscription[]>([]);
@@ -62,11 +65,60 @@ export class BillingStore {
     this.api.createSubscription(command).subscribe({
       next: () => {
         this.loadSubscriptions(command.laundryId);
+        this.router.navigate(['/admin/subscriptions']);
       },
       error: (err) => {
         this._error.set('Error al crear la suscripción');
         this._loading.set(false);
         console.error('Error creando suscripción:', err);
+      }
+    });
+  }
+
+  cancelSubscription(command: CancelSubscriptionCommand) {
+    this._loading.set(true);
+    this._error.set(null);
+
+    this.api.cancelSubscription(command.subscriptionId).subscribe({
+      next: () => {
+        this.loadSubscriptions(command.laundryId);
+      },
+      error: (err) => {
+        this._error.set('Error al cancelar la suscripción');
+        this._loading.set(false);
+      }
+    });
+  }
+
+  processCheckout(planId: number, laundryId: number) {
+    this._loading.set(true);
+    this._error.set(null);
+
+    const command = new CreateSubscriptionCommand(planId, laundryId);
+
+    this.api.createSubscription(command).subscribe({
+      next: (subRes: any) => {
+        const transBody = {
+          subscriptionId: subRes.id,
+          amount: 0,
+          date: new Date().toISOString().split('T')[0],
+          status: 'COMPLETED'
+        };
+
+        this.api.createTransaction(transBody).subscribe({
+          next: () => {
+            this.loadSubscriptions(laundryId);
+            this.router.navigate(['/admin/subscriptions']);
+          },
+          error: (err) => {
+            this._error.set('Error al procesar el pago');
+            this._loading.set(false);
+          }
+        });
+      },
+      error: (err) => {
+        this._error.set('Error al crear la suscripción');
+        this._loading.set(false);
       }
     });
   }
