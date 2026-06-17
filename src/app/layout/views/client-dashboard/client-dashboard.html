@@ -2,7 +2,7 @@
   <header class="hero">
     <div class="hero__content">
       <span class="hero__eyebrow">{{ greeting() }}</span>
-      <h1 class="hero__title">Hola, {{ user()?.firstName }} 👋</h1>
+      <h1 class="hero__title">Hola, {{ user()?.firstName || 'Cliente' }} 👋</h1>
       <p class="hero__subtitle">
         Gestiona tus pedidos de lavandería desde un solo lugar. Sigue el estado de tus prendas en tiempo real.
       </p>

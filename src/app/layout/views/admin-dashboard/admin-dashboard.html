@@ -2,7 +2,7 @@
   <header class="hero">
     <div class="hero__content">
       <span class="hero__eyebrow">{{ greeting() }} · Panel de administración</span>
-      <h1 class="hero__title">Bienvenido, {{ user()?.firstName }}</h1>
+      <h1 class="hero__title">Bienvenido, {{ user()?.firstName || 'Admin' }}</h1>
       <p class="hero__subtitle">
         Resumen operativo de tu lavandería. Monitorea inventario, pedidos y logística en tiempo real.
       </p>
