@@ -4,7 +4,7 @@ import { OrderResource, OrdersResponse } from './order.resource';
 import { OrderAssembler } from './order-assembler';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable, map, catchError } from 'rxjs';
+import { Observable, map, catchError, of } from 'rxjs';
 import { CreateOrderCommand } from '../domain/model/create-order.command';
 import { UpdateOrderStatusCommand } from '../domain/model/update-order-status.command';
 
@@ -16,7 +16,7 @@ export class OrdersApiEndpoint extends BaseApiEndpoint<Order, OrderResource, Ord
   getAllSorted(): Observable<Order[]> {
     return this.http.get<OrderResource[]>(`${this.endpointUrl}?_sort=-createdAt`).pipe(
       map(items => items.map(i => this.assembler.toEntityFromResource(i))),
-      catchError(this.handleError('Failed to fetch orders'))
+      catchError(() => of([]))
     );
   }
 
