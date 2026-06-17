@@ -1,0 +1,38 @@
+<div class="pedidos-center">
+
+  <div class="header">
+    <app-icon class="pm-icon" name="package"></app-icon>
+    <h2>Pedidos</h2>
+  </div>
+
+  @if (store.isLoading()) {
+    <div class="loading">Cargando pedidos...</div>
+  }
+
+  @if (store.error()) {
+    <div class="error">{{ store.error() }}</div>
+  }
+
+  <div class="list">
+    @for (p of store.pedidos(); track trackById($index, p)) {
+      <div class="card">
+        <div class="card-left">
+          <div class="id">Pedido #{{ p.id }}</div>
+          <div class="meta">Orden: {{ p.orderId }} — Cliente: {{ p.customerId }}</div>
+          <div class="meta">Lavandería: {{ p.laundryId }} •
+            <span class="chip status-{{ p.status }}">{{ p.status }}</span>
+          </div>
+          @if (p.notes) {
+            <div class="notes">{{ p.notes }}</div>
+          }
+        </div>
+        <div class="card-right">
+          <div class="price">S/ {{ p.totalPrice }}</div>
+          <button class="btn" (click)="onMarkCompleted(p.id)" [disabled]="p.status === 'COMPLETED'">Marcar completado</button>
+          <button class="btn danger" (click)="onDelete(p.id)">Eliminar</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+

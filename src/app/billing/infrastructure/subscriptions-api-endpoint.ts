@@ -31,4 +31,10 @@ export class SubscriptionsApiEndpoint extends BaseApiEndpoint<Subscription, Subs
       catchError(this.handleError('Failed to create subscription'))
     );
   }
+
+  cancel(id: number): Observable<any> {
+    return this.http.patch<any>(`${this.endpointUrl}/${id}`, { status: 'CANCELLED' }).pipe(
+      catchError(this.handleError('Failed to cancel subscription'))
+    );
+  }
 }

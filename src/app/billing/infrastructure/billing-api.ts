@@ -8,12 +8,14 @@ import { Plan } from '../domain/model/plan.entity';
 import { Subscription } from '../domain/model/subscription.entity';
 import { CreateSubscriptionCommand } from '../domain/model/create-subscription.command';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({ providedIn: 'root' })
 export class BillingApi extends BaseApi {
   private readonly plansEndpoint: PlansApiEndpoint;
   private readonly subscriptionsEndpoint: SubscriptionsApiEndpoint;
 
-  constructor(http: HttpClient) {
+  constructor(private http: HttpClient) {
     super();
     this.plansEndpoint = new PlansApiEndpoint(http);
     this.subscriptionsEndpoint = new SubscriptionsApiEndpoint(http);
@@ -22,4 +24,8 @@ export class BillingApi extends BaseApi {
   getPlans(): Observable<Plan[]> { return this.plansEndpoint.getAll(); }
   getSubscriptionsByLaundry(laundryId: number): Observable<Subscription[]> { return this.subscriptionsEndpoint.getByLaundry(laundryId); }
   createSubscription(command: CreateSubscriptionCommand): Observable<Subscription> { return this.subscriptionsEndpoint.createFromCommand(command); }
+  cancelSubscription(id: number): Observable<any> { return this.subscriptionsEndpoint.cancel(id); }
+  createTransaction(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.serverBaseUrl}${environment.transactionsEndpointPath}`, data);
+  }
 }

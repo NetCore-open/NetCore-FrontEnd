@@ -4,7 +4,7 @@
   gap: 24px;
 }
 
-/* ── Page header (matches notifications pattern) ── */
+
 
 .page__header {
   display: flex;
@@ -44,7 +44,7 @@
   font-size: 14px;
 }
 
-/* ── Subscription cards ── */
+
 
 .subscriptions-list {
   display: flex;
@@ -79,7 +79,7 @@
   color: var(--cw-text);
 }
 
-/* ── Status badges ── */
+
 
 .status {
   padding: 4px 14px;
@@ -105,7 +105,7 @@
   color: var(--cw-warning);
 }
 
-/* ── Subscription details ── */
+
 
 .sub-details {
   display: flex;
@@ -133,7 +133,7 @@
   color: var(--cw-text);
 }
 
-/* ── States ── */
+
 
 .state {
   background: var(--cw-surface);
@@ -198,4 +198,52 @@
   text-align: center;
   background-color: #fef2f2;
   color: var(--cw-danger);
+}
+
+.sub-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cw-border);
+}
+
+.btn-outline {
+  padding: 8px 16px;
+  border: 1px solid var(--cw-primary);
+  background: transparent;
+  color: var(--cw-primary);
+  border-radius: var(--cw-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: var(--cw-primary-light);
+}
+
+.btn-cancel {
+  padding: 8px 16px;
+  border: 1px solid var(--cw-danger);
+  background: transparent;
+  color: var(--cw-danger);
+  border-radius: var(--cw-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: var(--cw-danger);
+  color: var(--cw-text-inverse);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--cw-border);
+  color: var(--cw-text-muted);
 }

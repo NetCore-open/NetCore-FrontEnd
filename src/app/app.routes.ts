@@ -8,9 +8,11 @@ import { NotificationsCenterComponent } from './notifications/presentation/views
 import { authGuard } from './users/application/auth.guard';
 import { PlansComponent } from './billing/presentation/views/plans/plans';
 import { SubscriptionsComponent } from './billing/presentation/views/subscriptions/subscriptions';
+import { CheckoutComponent } from './billing/presentation/views/checkout/checkout';
 import { LogisticsComponent } from './logistics/presentation/views/logistics/logistics';
 import { OrdersComponent } from './orders/presentation/views/orders/orders';
 import { InventoryComponent } from './layout/views/inventory/inventory';
+import { PedidosComponent } from './pedidos/presentation/views/pedidos/pedidos';
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -51,6 +53,11 @@ export const routes: Routes = [
         canActivate: [authGuard(['ADMIN'])]
       },
       {
+        path: 'admin/checkout/:planId',
+        component: CheckoutComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
+      {
         path: 'admin/subscriptions',
         component: SubscriptionsComponent,
         canActivate: [authGuard(['ADMIN'])]
@@ -63,6 +70,11 @@ export const routes: Routes = [
       {
         path: 'admin/orders',
         component: OrdersComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
+      {
+        path: 'admin/pedidos',
+        component: PedidosComponent,
         canActivate: [authGuard(['ADMIN'])]
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
