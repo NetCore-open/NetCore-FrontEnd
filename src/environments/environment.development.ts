@@ -4,10 +4,11 @@ export const environment = {
   apiBasePath: '',
   usersEndpointPath: '/users',
   ordersEndpointPath: '/orders',
-  logisticsEndpointPath: '/deliveries',
+  logisticsEndpointPath: '/logistics/deliveries',
   notificationsEndpointPath: '/notifications',
-  plansEndpointPath: '/plans',
-  subscriptionsEndpointPath: '/subscriptions',
-  transactionsEndpointPath: '/transactions',
+  plansEndpointPath: '/billing/plans',
+  subscriptionsEndpointPath: '/billing/subscriptions',
+  transactionsEndpointPath: '/billing/transactions',
   signInEndpointPath: '/users',
 };
+
