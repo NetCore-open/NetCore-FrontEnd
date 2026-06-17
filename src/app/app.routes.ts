@@ -12,6 +12,7 @@ import { CheckoutComponent } from './billing/presentation/views/checkout/checkou
 import { LogisticsComponent } from './logistics/presentation/views/logistics/logistics';
 import { OrdersComponent } from './orders/presentation/views/orders/orders';
 import { InventoryComponent } from './layout/views/inventory/inventory';
+import { PedidosComponent } from './pedidos/presentation/views/pedidos/pedidos';
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -69,6 +70,11 @@ export const routes: Routes = [
       {
         path: 'admin/orders',
         component: OrdersComponent,
+        canActivate: [authGuard(['ADMIN'])]
+      },
+      {
+        path: 'admin/pedidos',
+        component: PedidosComponent,
         canActivate: [authGuard(['ADMIN'])]
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }

@@ -5,6 +5,7 @@
     "orders": "My orders",
     "inventory": "Inventory",
     "admin-orders": "Orders",
+    "pedidos": "Orders (Admin)",
     "logistics": "Logistics",
     "plans": "Plans",
     "subscriptions": "Subscriptions"
