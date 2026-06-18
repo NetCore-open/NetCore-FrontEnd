@@ -2,26 +2,27 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrdersStore, OrderFilter } from '../../../application/orders.store';
 import { Order, OrderStatus } from '../../../domain/model/order.entity';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './orders.html',
   styleUrl: './orders.css'
 })
 export class OrdersComponent implements OnInit {
   readonly store = inject(OrdersStore);
 
-  readonly filters: { label: string; value: OrderFilter }[] = [
-    { label: 'Todos', value: 'ALL' },
-    { label: 'Pendientes', value: 'PENDING' },
-    { label: 'Confirmados', value: 'CONFIRMED' },
-    { label: 'Recogidos', value: 'PICKED_UP' },
-    { label: 'En proceso', value: 'IN_PROCESS' },
-    { label: 'Listos', value: 'READY' },
-    { label: 'Entregados', value: 'DELIVERED' },
-    { label: 'Cancelados', value: 'CANCELLED' }
+  readonly filters: { i18nKey: string; value: OrderFilter }[] = [
+    { i18nKey: 'orders.filter.all', value: 'ALL' },
+    { i18nKey: 'orders.filter.pending', value: 'PENDING' },
+    { i18nKey: 'orders.filter.confirmed', value: 'CONFIRMED' },
+    { i18nKey: 'orders.filter.picked-up', value: 'PICKED_UP' },
+    { i18nKey: 'orders.filter.in-process', value: 'IN_PROCESS' },
+    { i18nKey: 'orders.filter.ready', value: 'READY' },
+    { i18nKey: 'orders.filter.delivered', value: 'DELIVERED' },
+    { i18nKey: 'orders.filter.cancelled', value: 'CANCELLED' }
   ];
 
   ngOnInit(): void {

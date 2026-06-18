@@ -5,14 +5,14 @@
         <app-icon name="bell"></app-icon>
       </div>
       <div>
-        <h1 class="page__title">Centro de notificaciones</h1>
+        <h1 class="page__title">{{ 'notifications.title' | translate }}</h1>
         <p class="page__subtitle">
           @if (store.unreadCount() === 0) {
-            Estás al día. No tienes notificaciones sin leer.
+            {{ 'notifications.subtitle-all-read' | translate }}
           } @else if (store.unreadCount() === 1) {
-            Tienes 1 notificación sin leer.
+            {{ 'notifications.subtitle-one-unread' | translate }}
           } @else {
-            Tienes {{ store.unreadCount() }} notificaciones sin leer.
+            {{ 'notifications.subtitle-many-unread' | translate:{count: store.unreadCount()} }}
           }
         </p>
       </div>
@@ -21,7 +21,7 @@
     @if (store.unreadCount() > 0) {
       <button class="page__action" type="button" (click)="onMarkAllAsRead()">
         <app-icon name="check-circle"></app-icon>
-        Marcar todas como leídas
+        {{ 'notifications.mark-all' | translate }}
       </button>
     }
   </header>
@@ -33,7 +33,7 @@
         class="filters__chip"
         [class.filters__chip--active]="store.filter() === option.value"
         (click)="onFilter(option.value)">
-        {{ option.label }}
+        {{ option.label | translate }}
         <span class="filters__count">{{ filterCounts()[option.value] }}</span>
       </button>
     }
@@ -43,7 +43,7 @@
     @if (store.loading()) {
       <div class="state state--loading">
         <div class="spinner"></div>
-        <p>Cargando notificaciones...</p>
+        <p>{{ 'notifications.loading' | translate }}</p>
       </div>
     } @else if (store.error(); as error) {
       <div class="state state--error">
@@ -53,8 +53,8 @@
     } @else if (store.filteredNotifications().length === 0) {
       <div class="state state--empty">
         <app-icon name="inbox"></app-icon>
-        <h3>Sin notificaciones</h3>
-        <p>No hay notificaciones que coincidan con el filtro seleccionado.</p>
+        <h3>{{ 'notifications.empty-title' | translate }}</h3>
+        <p>{{ 'notifications.empty-filter' | translate }}</p>
       </div>
     } @else {
       @for (notification of store.filteredNotifications(); track notification.id) {

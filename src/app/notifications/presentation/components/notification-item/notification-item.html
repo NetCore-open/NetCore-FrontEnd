@@ -11,9 +11,9 @@
   <div class="notification__body">
     <div class="notification__header">
       <h4 class="notification__title">{{ notification().title }}</h4>
-      <span class="notification__type-badge">{{ typeLabel() }}</span>
+      <span class="notification__type-badge">{{ typeLabel() | translate }}</span>
       @if (notification().priority === 'HIGH') {
-        <span class="notification__priority">Importante</span>
+        <span class="notification__priority">{{ 'notifications.important' | translate }}</span>
       }
     </div>
 
@@ -27,7 +27,7 @@
             type="button"
             class="notification__action notification__action--read"
             (click)="onMarkAsRead($event)"
-            title="Marcar como leído">
+            [title]="'notifications.mark-all' | translate">
             <app-icon name="check-circle"></app-icon>
           </button>
         }
@@ -35,7 +35,7 @@
           type="button"
           class="notification__action notification__action--delete"
           (click)="onDelete($event)"
-          title="Eliminar">
+          [title]="'sidebar.logout' | translate">
           <app-icon name="trash"></app-icon>
         </button>
       </div>
@@ -43,6 +43,6 @@
   </div>
 
   @if (!notification().isRead) {
-    <span class="notification__dot" aria-label="No leído"></span>
+    <span class="notification__dot" [attr.aria-label]="'notifications.filter.unread' | translate"></span>
   }
 </article>

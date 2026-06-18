@@ -74,13 +74,33 @@
     "filter-all": "All",
     "status-ok": "Normal",
     "status-low": "Low stock",
-    "status-critical": "Out of stock"
+    "status-critical": "Out of stock",
+    "category": {
+      "cleaning": "Cleaning",
+      "packaging": "Packaging",
+      "machinery": "Machinery",
+      "operations": "Operations"
+    }
   },
   "notifications": {
     "title": "Notification center",
     "subtitle": "Stay up to date with your alerts",
+    "subtitle-all-read": "You're all caught up. No unread notifications.",
+    "subtitle-one-unread": "You have 1 unread notification.",
+    "subtitle-many-unread": "You have {{count}} unread notifications.",
+    "empty-filter": "No notifications match the selected filter.",
+    "empty-title": "No notifications",
     "mark-all": "Mark all as read",
     "empty": "You have no notifications.",
+    "loading": "Loading notifications...",
+    "important": "Important",
+    "type": {
+      "order": "Order",
+      "logistics": "Logistics",
+      "billing": "Billing",
+      "system": "System",
+      "promo": "Promotion"
+    },
     "filter": {
       "all": "All",
       "unread": "Unread",
@@ -100,5 +120,96 @@
     "loading": "Signing in...",
     "no-account": "Don't have an account?",
     "register": "Register"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "welcome-client": "Hello, {{name}} 👋",
+    "welcome-admin": "Welcome, {{name}}",
+    "subtitle-client": "Manage your laundry orders from one place. Track the status of your clothes in real time.",
+    "subtitle-admin": "Operational summary of your laundry. Monitor inventory, orders and logistics in real time.",
+    "admin-panel": "Administration panel",
+    "kpis": {
+      "today-orders": "Orders today",
+      "today-orders-hint": "+12% vs yesterday",
+      "on-time-deliveries": "On-time deliveries",
+      "on-time-deliveries-hint": "+2.4%",
+      "in-route": "In route",
+      "in-route-hint": "active vehicles",
+      "alerts": "Alerts",
+      "alerts-hint": "unread",
+      "active-orders": "Active orders",
+      "active-orders-hint": "in process",
+      "delivered-orders": "Delivered",
+      "delivered-orders-hint": "this month",
+      "on-the-way": "On the way",
+      "on-the-way-hint": "scheduled pickup"
+    },
+    "ops-status": {
+      "title": "Operations status",
+      "hint": "Real time",
+      "washing": "Washing in progress",
+      "washing-hint": "12 active loads",
+      "pickup": "Pending pickups",
+      "pickup-hint": "5 scheduled addresses",
+      "delays": "Delays",
+      "delays-hint": "1 order out of target time",
+      "low-inventory": "Low inventory",
+      "low-inventory-hint": "2 supplies to replenish"
+    },
+    "quick-access": "Quick access",
+    "actions": {
+      "manage-inventory": "Manage inventory",
+      "view-orders": "View orders",
+      "optimize-routes": "Optimize routes",
+      "notifications": "Notifications",
+      "new-order": "New order",
+      "schedule-pickup": "Schedule pickup",
+      "view-notifications": "View notifications",
+      "support": "Support"
+    }
+  },
+  "logistics": {
+    "title": "Logistics",
+    "subtitle": "Pickup and delivery management",
+    "pending": "Pending",
+    "transit": "In transit",
+    "delivered": "Delivered",
+    "loading": "Loading deliveries...",
+    "empty": "No deliveries for this filter.",
+    "id": "ID",
+    "type": "Type",
+    "order": "Order",
+    "address": "Address",
+    "date": "Date",
+    "driver": "Driver",
+    "status": "Status",
+    "actions": "Actions",
+    "advance": "Advance",
+    "fail": "Fail",
+    "type-label": {
+      "pickup": "Pickup",
+      "delivery": "Delivery"
+    },
+    "status-label": {
+      "pending": "Pending",
+      "assigned": "Assigned",
+      "picked-up": "Picked up",
+      "in-transit": "In transit",
+      "delivered": "Delivered",
+      "failed": "Failed"
+    },
+    "filter": {
+      "all": "All",
+      "pending": "Pending",
+      "assigned": "Assigned",
+      "picked-up": "Picked up",
+      "in-transit": "In transit",
+      "delivered": "Delivered",
+      "failed": "Failed"
+    }
   }
 }

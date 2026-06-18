@@ -3,8 +3,8 @@
   <!-- Header -->
   <div class="inv-header">
     <div>
-      <h1>Inventario</h1>
-      <p class="subtitle">Control de insumos y materiales de la lavandería</p>
+      <h1>{{ 'inventory.title' | translate }}</h1>
+      <p class="subtitle">{{ 'inventory.subtitle' | translate }}</p>
     </div>
   </div>
 
@@ -13,37 +13,37 @@
     <div class="kpi">
       <div class="kpi__icon kpi__icon--blue"><app-icon name="box"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Total de insumos</span>
+        <span class="kpi__label">{{ 'inventory.total' | translate }}</span>
         <span class="kpi__value">{{ totalItems }}</span>
-        <span class="kpi__delta">productos registrados</span>
+        <span class="kpi__delta">{{ 'inventory.total-hint' | translate }}</span>
       </div>
     </div>
     <div class="kpi">
       <div class="kpi__icon kpi__icon--green"><app-icon name="check-circle"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Stock normal</span>
+        <span class="kpi__label">{{ 'inventory.ok' | translate }}</span>
         <span class="kpi__value">{{ okCount }}</span>
-        <span class="kpi__delta">productos en nivel óptimo</span>
+        <span class="kpi__delta">{{ 'inventory.ok-hint' | translate }}</span>
       </div>
     </div>
     <div class="kpi kpi--alert">
       <div class="kpi__icon kpi__icon--orange"><app-icon name="alert-triangle"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Stock bajo</span>
+        <span class="kpi__label">{{ 'inventory.low' | translate }}</span>
         <span class="kpi__value">{{ lowStockCount }}</span>
-        <span class="kpi__delta">requieren reabastecimiento</span>
+        <span class="kpi__delta">{{ 'inventory.low-hint' | translate }}</span>
       </div>
     </div>
   </div>
 
   <!-- Filters -->
   <div class="filter-bar">
-    @for (cat of categories; track cat) {
+    @for (cat of categories; track cat.value) {
       <button
         class="filter-btn"
-        [class.active]="selectedCategory === cat"
-        (click)="setCategory(cat)">
-        {{ cat }}
+        [class.active]="selectedCategory === cat.value"
+        (click)="setCategory(cat.value)">
+        {{ cat.key | translate }}
       </button>
     }
   </div>
@@ -53,20 +53,24 @@
     <table class="inv-table">
       <thead>
       <tr>
-        <th>Producto</th>
-        <th>Categoría</th>
-        <th>Stock actual</th>
-        <th>Mínimo</th>
-        <th>Nivel</th>
-        <th>Estado</th>
-        <th>Último reabastecimiento</th>
+        <th>{{ 'inventory.product' | translate }}</th>
+        <th>{{ 'inventory.category' | translate }}</th>
+        <th>{{ 'inventory.stock' | translate }}</th>
+        <th>{{ 'inventory.min' | translate }}</th>
+        <th>{{ 'inventory.level' | translate }}</th>
+        <th>{{ 'inventory.status' | translate }}</th>
+        <th>{{ 'inventory.restocked' | translate }}</th>
       </tr>
       </thead>
       <tbody>
         @for (item of filteredItems; track item.id) {
           <tr [class.row--alert]="stockStatus(item) !== 'ok'">
             <td class="name-cell">{{ item.name }}</td>
-            <td><span class="category-tag">{{ item.category }}</span></td>
+            <td>
+              <span class="category-tag">
+                {{ 'inventory.category.' + item.category.toLowerCase().replace('limpieza', 'cleaning').replace('empaque', 'packaging').replace('maquinaria', 'machinery').replace('operaciones', 'operations') | translate }}
+              </span>
+            </td>
             <td class="stock-cell">
               <strong>{{ item.stock }}</strong> {{ item.unit }}
             </td>
@@ -82,7 +86,7 @@
             </td>
             <td>
               <span class="status-badge" [class]="'status-badge--' + stockStatus(item)">
-                {{ stockLabel(item) }}
+                {{ stockLabel(item) | translate }}
               </span>
             </td>
             <td class="muted">{{ item.lastRestocked | date:'dd/MM/yyyy' }}</td>

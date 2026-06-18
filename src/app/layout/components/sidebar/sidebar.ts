@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { UsersStore } from '../../../users/application/users.store';
 import { NotificationsStore } from '../../../notifications/application/notifications.store';
@@ -20,7 +20,13 @@ export class SidebarComponent {
 
   readonly currentUser = this.usersStore.currentUser;
   readonly unreadCount = this.notificationsStore.unreadCount;
-  readonly currentLang = computed(() => this.translate.currentLang ?? 'es');
+  readonly currentLang = signal(this.translate.currentLang ?? 'es');
+
+  constructor() {
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang.set(event.lang);
+    });
+  }
 
   readonly navItems = computed(() => {
     const user = this.currentUser();

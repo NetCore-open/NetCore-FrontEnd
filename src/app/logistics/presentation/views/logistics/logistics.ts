@@ -2,25 +2,26 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogisticsStore, DeliveryFilter } from '../../../application/logistics.store';
 import { Delivery, DeliveryStatus } from '../../../domain/model/delivery.entity';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-logistics',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './logistics.html',
   styleUrl: './logistics.css'
 })
 export class LogisticsComponent implements OnInit {
   readonly store = inject(LogisticsStore);
 
-  readonly filters: { label: string; value: DeliveryFilter }[] = [
-    { label: 'Todos', value: 'ALL' },
-    { label: 'Pendientes', value: 'PENDING' },
-    { label: 'Asignados', value: 'ASSIGNED' },
-    { label: 'Recogidos', value: 'PICKED_UP' },
-    { label: 'En tránsito', value: 'IN_TRANSIT' },
-    { label: 'Entregados', value: 'DELIVERED' },
-    { label: 'Fallidos', value: 'FAILED' }
+  readonly filters: { i18nKey: string; value: DeliveryFilter }[] = [
+    { i18nKey: 'logistics.filter.all', value: 'ALL' },
+    { i18nKey: 'logistics.filter.pending', value: 'PENDING' },
+    { i18nKey: 'logistics.filter.assigned', value: 'ASSIGNED' },
+    { i18nKey: 'logistics.filter.picked-up', value: 'PICKED_UP' },
+    { i18nKey: 'logistics.filter.in-transit', value: 'IN_TRANSIT' },
+    { i18nKey: 'logistics.filter.delivered', value: 'DELIVERED' },
+    { i18nKey: 'logistics.filter.failed', value: 'FAILED' }
   ];
 
   ngOnInit(): void {
@@ -54,19 +55,11 @@ export class LogisticsComponent implements OnInit {
   }
 
   statusLabel(status: DeliveryStatus): string {
-    const labels: Record<DeliveryStatus, string> = {
-      PENDING: 'Pendiente',
-      ASSIGNED: 'Asignado',
-      PICKED_UP: 'Recogido',
-      IN_TRANSIT: 'En tránsito',
-      DELIVERED: 'Entregado',
-      FAILED: 'Fallido'
-    };
-    return labels[status];
+    return `logistics.status-label.${status.toLowerCase().replace('_', '-')}`;
   }
 
   typeLabel(type: string): string {
-    return type === 'PICKUP' ? 'Recojo' : 'Entrega';
+    return `logistics.type-label.${type.toLowerCase()}`;
   }
 
   trackById(_: number, item: Delivery): number {

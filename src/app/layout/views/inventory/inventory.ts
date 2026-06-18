@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../../../shared/components/icon/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface InventoryItem {
   id: number;
@@ -15,7 +16,7 @@ interface InventoryItem {
 @Component({
   selector: 'app-inventory',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, TranslateModule],
   templateUrl: './inventory.html',
   styleUrl: './inventory.css'
 })
@@ -36,7 +37,13 @@ export class InventoryComponent {
     { id: 12, name: 'Plástico protector (m)',      category: 'Empaque',     stock: 80,  minStock: 30, unit: 'metros',    lastRestocked: '2026-04-30' },
   ];
 
-  readonly categories = ['Todos', 'Limpieza', 'Empaque', 'Maquinaria', 'Operaciones'];
+  readonly categories = [
+    { key: 'inventory.filter-all', value: 'Todos' },
+    { key: 'inventory.category.cleaning', value: 'Limpieza' },
+    { key: 'inventory.category.packaging', value: 'Empaque' },
+    { key: 'inventory.category.machinery', value: 'Maquinaria' },
+    { key: 'inventory.category.operations', value: 'Operaciones' }
+  ];
   selectedCategory = 'Todos';
 
   get filteredItems(): InventoryItem[] {
@@ -64,9 +71,9 @@ export class InventoryComponent {
 
   stockLabel(item: InventoryItem): string {
     const s = this.stockStatus(item);
-    if (s === 'critical') return 'Sin stock';
-    if (s === 'low') return 'Stock bajo';
-    return 'Normal';
+    if (s === 'critical') return 'inventory.status-critical';
+    if (s === 'low') return 'inventory.status-low';
+    return 'inventory.status-ok';
   }
 
   stockPercent(item: InventoryItem): number {

@@ -1,10 +1,10 @@
 <section class="dashboard">
   <header class="hero">
     <div class="hero__content">
-      <span class="hero__eyebrow">{{ greeting() }}</span>
-      <h1 class="hero__title">Hola, {{ user()?.firstName || 'Cliente' }} 👋</h1>
+      <span class="hero__eyebrow">{{ greetingKey() | translate }}</span>
+      <h1 class="hero__title">{{ 'dashboard.welcome-client' | translate:{name: user()?.firstName || 'Client'} }}</h1>
       <p class="hero__subtitle">
-        Gestiona tus pedidos de lavandería desde un solo lugar. Sigue el estado de tus prendas en tiempo real.
+        {{ 'dashboard.subtitle-client' | translate }}
       </p>
     </div>
     <div class="hero__decoration">CW</div>
@@ -14,60 +14,60 @@
     <a routerLink="/notifications" class="card card--accent">
       <div class="card__icon"><app-icon name="bell"></app-icon></div>
       <div class="card__body">
-        <span class="card__label">Notificaciones</span>
+        <span class="card__label">{{ 'dashboard.kpis.alerts' | translate }}</span>
         <span class="card__value">{{ unreadCount() }}</span>
-        <span class="card__hint">sin leer</span>
+        <span class="card__hint">{{ 'dashboard.kpis.alerts-hint' | translate }}</span>
       </div>
     </a>
 
     <div class="card">
       <div class="card__icon card__icon--blue"><app-icon name="package"></app-icon></div>
       <div class="card__body">
-        <span class="card__label">Pedidos activos</span>
+        <span class="card__label">{{ 'dashboard.kpis.active-orders' | translate }}</span>
         <span class="card__value">2</span>
-        <span class="card__hint">en proceso</span>
+        <span class="card__hint">{{ 'dashboard.kpis.active-orders-hint' | translate }}</span>
       </div>
     </div>
 
     <div class="card">
       <div class="card__icon card__icon--green"><app-icon name="check-circle"></app-icon></div>
       <div class="card__body">
-        <span class="card__label">Entregados</span>
+        <span class="card__label">{{ 'dashboard.kpis.delivered-orders' | translate }}</span>
         <span class="card__value">14</span>
-        <span class="card__hint">este mes</span>
+        <span class="card__hint">{{ 'dashboard.kpis.delivered-orders-hint' | translate }}</span>
       </div>
     </div>
 
     <div class="card">
       <div class="card__icon card__icon--orange"><app-icon name="truck"></app-icon></div>
       <div class="card__body">
-        <span class="card__label">En camino</span>
+        <span class="card__label">{{ 'dashboard.kpis.on-the-way' | translate }}</span>
         <span class="card__value">1</span>
-        <span class="card__hint">recojo programado</span>
+        <span class="card__hint">{{ 'dashboard.kpis.on-the-way-hint' | translate }}</span>
       </div>
     </div>
   </div>
 
   <div class="panel">
     <div class="panel__header">
-      <h2>Accesos rápidos</h2>
+      <h2>{{ 'dashboard.quick-access' | translate }}</h2>
     </div>
     <div class="actions">
       <button type="button" class="actions__item">
         <app-icon name="package"></app-icon>
-        <span>Nuevo pedido</span>
+        <span>{{ 'dashboard.actions.new-order' | translate }}</span>
       </button>
       <button type="button" class="actions__item">
         <app-icon name="truck"></app-icon>
-        <span>Programar recojo</span>
+        <span>{{ 'dashboard.actions.schedule-pickup' | translate }}</span>
       </button>
       <a routerLink="/notifications" class="actions__item">
         <app-icon name="bell"></app-icon>
-        <span>Ver notificaciones</span>
+        <span>{{ 'dashboard.actions.view-notifications' | translate }}</span>
       </a>
       <button type="button" class="actions__item">
         <app-icon name="info"></app-icon>
-        <span>Soporte</span>
+        <span>{{ 'dashboard.actions.support' | translate }}</span>
       </button>
     </div>
   </div>

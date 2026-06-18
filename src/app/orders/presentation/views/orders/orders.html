@@ -3,25 +3,25 @@
   <!-- Header -->
   <div class="orders-header">
     <div class="header-title">
-      <h1>Pedidos</h1>
-      <p class="subtitle">Gestión y seguimiento de pedidos</p>
+      <h1>{{ 'orders.title' | translate }}</h1>
+      <p class="subtitle">{{ 'orders.subtitle' | translate }}</p>
     </div>
     <div class="header-stats">
       <div class="stat-badge pending">
         <span class="stat-number">{{ store.pendingCount() }}</span>
-        <span class="stat-label">Pendientes</span>
+        <span class="stat-label">{{ 'orders.pending' | translate }}</span>
       </div>
       <div class="stat-badge in-process">
         <span class="stat-number">{{ store.inProcessCount() }}</span>
-        <span class="stat-label">En proceso</span>
+        <span class="stat-label">{{ 'orders.in-process' | translate }}</span>
       </div>
       <div class="stat-badge ready">
         <span class="stat-number">{{ store.readyCount() }}</span>
-        <span class="stat-label">Listos</span>
+        <span class="stat-label">{{ 'orders.ready' | translate }}</span>
       </div>
       <div class="stat-badge revenue">
         <span class="stat-number">S/ {{ store.totalRevenue() | number:'1.2-2' }}</span>
-        <span class="stat-label">Ingresos</span>
+        <span class="stat-label">{{ 'orders.revenue' | translate }}</span>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
         class="filter-btn"
         [class.active]="store.filter() === f.value"
         (click)="setFilter(f.value)">
-        {{ f.label }}
+        {{ f.i18nKey | translate }}
       </button>
     }
   </div>
@@ -42,7 +42,7 @@
   @if (store.loading()) {
     <div class="state-message">
       <span class="spinner"></span>
-      <p>Cargando pedidos...</p>
+      <p>{{ 'orders.loading' | translate }}</p>
     </div>
   }
 
@@ -56,7 +56,7 @@
   <!-- Empty -->
   @if (!store.loading() && !store.error() && store.filteredOrders().length === 0) {
     <div class="state-message empty">
-      <p>No hay pedidos para este filtro.</p>
+      <p>{{ 'orders.empty' | translate }}</p>
     </div>
   }
 
@@ -66,14 +66,14 @@
       <table class="orders-table">
         <thead>
         <tr>
-          <th>ID</th>
-          <th>Cliente</th>
-          <th>Dirección</th>
-          <th>Prendas</th>
-          <th>Total</th>
-          <th>Recojo</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th>{{ 'orders.id' | translate }}</th>
+          <th>{{ 'orders.client' | translate }}</th>
+          <th>{{ 'orders.address' | translate }}</th>
+          <th>{{ 'orders.items' | translate }}</th>
+          <th>{{ 'orders.total' | translate }}</th>
+          <th>{{ 'orders.pickup' | translate }}</th>
+          <th>{{ 'orders.status' | translate }}</th>
+          <th>{{ 'orders.actions' | translate }}</th>
         </tr>
         </thead>
         <tbody>
@@ -91,18 +91,18 @@
               <td>{{ order.scheduledPickup | date:'dd/MM/yyyy' }}</td>
               <td>
                 <span class="status-badge" [class]="statusClass(order.status)">
-                  {{ statusLabel(order.status) }}
+                  {{ 'orders.status-label.' + order.status.toLowerCase() | translate }}
                 </span>
               </td>
               <td class="actions-cell">
                 @if (nextStatus(order)) {
                   <button class="btn-advance" (click)="advance(order)">
-                    Avanzar
+                    {{ 'orders.advance' | translate }}
                   </button>
                 }
                 @if (order.status !== 'DELIVERED' && order.status !== 'CANCELLED') {
                   <button class="btn-cancel" (click)="cancel(order)">
-                    Cancelar
+                    {{ 'orders.cancel' | translate }}
                   </button>
                 }
               </td>

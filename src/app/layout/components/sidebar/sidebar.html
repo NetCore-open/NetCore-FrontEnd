@@ -15,9 +15,11 @@
         class="sidebar__link">
         <app-icon [name]="item.icon" class="sidebar__link-icon"></app-icon>
         <span class="sidebar__link-label">{{ 'nav.' + item.i18nKey | translate }}</span>
-        <span class="sidebar__badge" *ngIf="item.showBadge && unreadCount() > 0">
-          {{ unreadCount() > 99 ? '99+' : unreadCount() }}
-        </span>
+        @if (item.showBadge && unreadCount() > 0) {
+          <span class="sidebar__badge">
+            {{ unreadCount() > 99 ? '99+' : unreadCount() }}
+          </span>
+        }
       </a>
     }
   </nav>

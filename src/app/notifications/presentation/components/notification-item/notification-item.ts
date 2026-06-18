@@ -2,6 +2,7 @@ import { Component, computed, input, output } from '@angular/core';
 import { Notification, NotificationType } from '../../../domain/model/notification.entity';
 import { TimeAgoPipe } from '../../../../shared/pipes/time-ago.pipe';
 import { IconComponent } from '../../../../shared/components/icon/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 const TYPE_ICON: Record<NotificationType, string> = {
   ORDER: 'package',
@@ -12,17 +13,17 @@ const TYPE_ICON: Record<NotificationType, string> = {
 };
 
 const TYPE_LABEL: Record<NotificationType, string> = {
-  ORDER: 'Pedido',
-  LOGISTICS: 'Logística',
-  BILLING: 'Facturación',
-  SYSTEM: 'Sistema',
-  PROMO: 'Promoción'
+  ORDER: 'notifications.type.order',
+  LOGISTICS: 'notifications.type.logistics',
+  BILLING: 'notifications.type.billing',
+  SYSTEM: 'notifications.type.system',
+  PROMO: 'notifications.type.promo'
 };
 
 @Component({
   selector: 'app-notification-item',
   standalone: true,
-  imports: [TimeAgoPipe, IconComponent],
+  imports: [TimeAgoPipe, IconComponent, TranslateModule],
   templateUrl: './notification-item.html',
   styleUrl: './notification-item.css'
 })
