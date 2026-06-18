@@ -21,12 +21,14 @@ export class UsersStore {
   readonly isAuthenticated = computed(() => !!this._user());
 
   constructor() {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      try {
-        const parsed = JSON.parse(savedUser);
-        this._user.set(new User(parsed.id, parsed.email, parsed.firstName, parsed.lastName, parsed.role));
-      } catch (e) {}
+    if (typeof localStorage !== 'undefined') {
+      const savedUser = localStorage.getItem('user');
+      if (savedUser) {
+        try {
+          const parsed = JSON.parse(savedUser);
+          this._user.set(new User(parsed.id, parsed.email, parsed.firstName, parsed.lastName, parsed.role));
+        } catch (e) {}
+      }
     }
   }
 
