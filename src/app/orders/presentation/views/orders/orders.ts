@@ -4,6 +4,8 @@ import { OrdersStore, OrderFilter } from '../../../application/orders.store';
 import { Order, OrderStatus } from '../../../domain/model/order.entity';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { UsersStore } from '../../../users/application/users.store';
+
 @Component({
   selector: 'app-orders',
   standalone: true,
@@ -13,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class OrdersComponent implements OnInit {
   readonly store = inject(OrdersStore);
+  readonly usersStore = inject(UsersStore);
 
   readonly filters: { i18nKey: string; value: OrderFilter }[] = [
     { i18nKey: 'orders.filter.all', value: 'ALL' },
@@ -26,7 +29,12 @@ export class OrdersComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.store.loadAll();
+    const user = this.usersStore.currentUser();
+    if (user?.role === 'ADMIN' || user?.role === ('ROLE_ADMIN' as any)) {
+      this.store.loadAll();
+    } else {
+      this.store.loadForCurrentUser();
+    }
   }
 
   setFilter(value: OrderFilter): void {
