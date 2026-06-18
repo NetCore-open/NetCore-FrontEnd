@@ -20,6 +20,16 @@ export class UsersStore {
   readonly error = this._error.asReadonly();
   readonly isAuthenticated = computed(() => !!this._user());
 
+  constructor() {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      try {
+        const parsed = JSON.parse(savedUser);
+        this._user.set(new User(parsed.id, parsed.email, parsed.firstName, parsed.lastName, parsed.role));
+      } catch (e) {}
+    }
+  }
+
   signIn(command: SignInCommand) {
     this._loading.set(true);
     this._error.set(null);
@@ -37,6 +47,7 @@ export class UsersStore {
 
           this._user.set(userEntity);
           localStorage.setItem('token', userData.token);
+          localStorage.setItem('user', JSON.stringify(userEntity));
 
           if (userEntity.role === 'ADMIN') {
             this.router.navigate(['/admin/dashboard']);
@@ -60,6 +71,7 @@ export class UsersStore {
   logout() {
     this._user.set(null);
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
 }

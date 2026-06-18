@@ -4,6 +4,8 @@ import { LogisticsStore, DeliveryFilter } from '../../../application/logistics.s
 import { Delivery, DeliveryStatus } from '../../../domain/model/delivery.entity';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { UsersStore } from '../../../users/application/users.store';
+
 @Component({
   selector: 'app-logistics',
   standalone: true,
@@ -13,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class LogisticsComponent implements OnInit {
   readonly store = inject(LogisticsStore);
+  readonly usersStore = inject(UsersStore);
 
   readonly filters: { i18nKey: string; value: DeliveryFilter }[] = [
     { i18nKey: 'logistics.filter.all', value: 'ALL' },
@@ -25,7 +28,12 @@ export class LogisticsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.store.loadAll();
+    const user = this.usersStore.currentUser();
+    if (user?.role === 'ADMIN' || user?.role === ('ROLE_ADMIN' as any)) {
+      this.store.loadAll();
+    } else {
+      this.store.loadForCurrentUser();
+    }
   }
 
   setFilter(value: DeliveryFilter): void {
