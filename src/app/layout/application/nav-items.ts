@@ -16,7 +16,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Mis pedidos', path: '/orders',           icon: 'package',     roles: ['CLIENT'],          i18nKey: 'orders' },
   { label: 'Inventario', path: '/admin/inventory',   icon: 'box',         roles: ['ADMIN'],           i18nKey: 'inventory' },
   { label: 'Pedidos', path: '/admin/orders',         icon: 'package',     roles: ['ADMIN'],           i18nKey: 'admin-orders' },
-  { label: 'Pedidos Admin', path: '/admin/pedidos',   icon: 'package',     roles: ['ADMIN'],           i18nKey: 'pedidos' },
   { label: 'Logística', path: '/admin/logistics',    icon: 'truck',       roles: ['ADMIN'],           i18nKey: 'logistics' },
   { label: 'Planes', path: '/admin/plans',           icon: 'credit-card', roles: ['ADMIN'],           i18nKey: 'plans' },
   { label: 'Suscripciones', path: '/admin/subscriptions', icon: 'refresh-cw', roles: ['ADMIN'],      i18nKey: 'subscriptions' },

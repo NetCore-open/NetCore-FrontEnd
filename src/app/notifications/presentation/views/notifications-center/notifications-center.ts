@@ -2,6 +2,7 @@ import { Component, computed, inject, OnInit } from '@angular/core';
 import { NotificationsStore, NotificationFilter } from '../../../application/notifications.store';
 import { NotificationItemComponent } from '../../components/notification-item/notification-item';
 import { IconComponent } from '../../../../shared/components/icon/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface FilterOption {
   value: NotificationFilter;
@@ -11,7 +12,7 @@ interface FilterOption {
 @Component({
   selector: 'app-notifications-center',
   standalone: true,
-  imports: [NotificationItemComponent, IconComponent],
+  imports: [NotificationItemComponent, IconComponent, TranslateModule],
   templateUrl: './notifications-center.html',
   styleUrl: './notifications-center.css'
 })
@@ -19,13 +20,13 @@ export class NotificationsCenterComponent implements OnInit {
   readonly store = inject(NotificationsStore);
 
   readonly filterOptions: FilterOption[] = [
-    { value: 'ALL', label: 'Todas' },
-    { value: 'UNREAD', label: 'No leídas' },
-    { value: 'ORDER', label: 'Pedidos' },
-    { value: 'LOGISTICS', label: 'Logística' },
-    { value: 'BILLING', label: 'Facturación' },
-    { value: 'SYSTEM', label: 'Sistema' },
-    { value: 'PROMO', label: 'Promociones' }
+    { value: 'ALL', label: 'notifications.filter.all' },
+    { value: 'UNREAD', label: 'notifications.filter.unread' },
+    { value: 'ORDER', label: 'notifications.filter.order' },
+    { value: 'LOGISTICS', label: 'notifications.filter.logistics' },
+    { value: 'BILLING', label: 'notifications.filter.billing' },
+    { value: 'SYSTEM', label: 'notifications.filter.system' },
+    { value: 'PROMO', label: 'notifications.filter.promo' }
   ];
 
   readonly filterCounts = computed(() => {

@@ -1,10 +1,10 @@
 <section class="dashboard">
   <header class="hero">
     <div class="hero__content">
-      <span class="hero__eyebrow">{{ greeting() }} · Panel de administración</span>
-      <h1 class="hero__title">Bienvenido, {{ user()?.firstName || 'Admin' }}</h1>
+      <span class="hero__eyebrow">{{ greetingKey() | translate }} · {{ 'dashboard.admin-panel' | translate }}</span>
+      <h1 class="hero__title">{{ 'dashboard.welcome-admin' | translate:{name: user()?.firstName || 'Admin'} }}</h1>
       <p class="hero__subtitle">
-        Resumen operativo de tu lavandería. Monitorea inventario, pedidos y logística en tiempo real.
+        {{ 'dashboard.subtitle-admin' | translate }}
       </p>
     </div>
     <div class="hero__decoration">CW</div>
@@ -14,36 +14,36 @@
     <div class="kpi">
       <div class="kpi__icon kpi__icon--blue"><app-icon name="package"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Pedidos hoy</span>
+        <span class="kpi__label">{{ 'dashboard.kpis.today-orders' | translate }}</span>
         <span class="kpi__value">38</span>
-        <span class="kpi__delta kpi__delta--up">+12% vs ayer</span>
+        <span class="kpi__delta kpi__delta--up">{{ 'dashboard.kpis.today-orders-hint' | translate }}</span>
       </div>
     </div>
 
     <div class="kpi">
       <div class="kpi__icon kpi__icon--green"><app-icon name="check-circle"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Entregas a tiempo</span>
+        <span class="kpi__label">{{ 'dashboard.kpis.on-time-deliveries' | translate }}</span>
         <span class="kpi__value">96%</span>
-        <span class="kpi__delta kpi__delta--up">+2.4%</span>
+        <span class="kpi__delta kpi__delta--up">{{ 'dashboard.kpis.on-time-deliveries-hint' | translate }}</span>
       </div>
     </div>
 
     <div class="kpi">
       <div class="kpi__icon kpi__icon--orange"><app-icon name="truck"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">En ruta</span>
+        <span class="kpi__label">{{ 'dashboard.kpis.in-route' | translate }}</span>
         <span class="kpi__value">7</span>
-        <span class="kpi__delta">vehículos activos</span>
+        <span class="kpi__delta">{{ 'dashboard.kpis.in-route-hint' | translate }}</span>
       </div>
     </div>
 
     <a routerLink="/notifications" class="kpi kpi--link">
       <div class="kpi__icon kpi__icon--purple"><app-icon name="bell"></app-icon></div>
       <div class="kpi__body">
-        <span class="kpi__label">Alertas</span>
+        <span class="kpi__label">{{ 'dashboard.kpis.alerts' | translate }}</span>
         <span class="kpi__value">{{ unreadCount() }}</span>
-        <span class="kpi__delta">sin leer</span>
+        <span class="kpi__delta">{{ 'dashboard.kpis.alerts-hint' | translate }}</span>
       </div>
     </a>
   </div>
@@ -51,36 +51,36 @@
   <div class="grid-two">
     <div class="panel">
       <div class="panel__header">
-        <h2>Estado de operaciones</h2>
-        <span class="panel__hint">Tiempo real</span>
+        <h2>{{ 'dashboard.ops-status.title' | translate }}</h2>
+        <span class="panel__hint">{{ 'dashboard.ops-status.hint' | translate }}</span>
       </div>
       <ul class="ops">
         <li class="ops__item">
           <span class="ops__dot ops__dot--green"></span>
           <div class="ops__body">
-            <span class="ops__title">Lavado en curso</span>
-            <span class="ops__value">12 cargas activas</span>
+            <span class="ops__title">{{ 'dashboard.ops-status.washing' | translate }}</span>
+            <span class="ops__value">{{ 'dashboard.ops-status.washing-hint' | translate }}</span>
           </div>
         </li>
         <li class="ops__item">
           <span class="ops__dot ops__dot--blue"></span>
           <div class="ops__body">
-            <span class="ops__title">Pendientes de recojo</span>
-            <span class="ops__value">5 direcciones programadas</span>
+            <span class="ops__title">{{ 'dashboard.ops-status.pickup' | translate }}</span>
+            <span class="ops__value">{{ 'dashboard.ops-status.pickup-hint' | translate }}</span>
           </div>
         </li>
         <li class="ops__item">
           <span class="ops__dot ops__dot--orange"></span>
           <div class="ops__body">
-            <span class="ops__title">Retrasos</span>
-            <span class="ops__value">1 pedido fuera de tiempo objetivo</span>
+            <span class="ops__title">{{ 'dashboard.ops-status.delays' | translate }}</span>
+            <span class="ops__value">{{ 'dashboard.ops-status.delays-hint' | translate }}</span>
           </div>
         </li>
         <li class="ops__item">
           <span class="ops__dot ops__dot--gray"></span>
           <div class="ops__body">
-            <span class="ops__title">Inventario bajo</span>
-            <span class="ops__value">2 insumos por reabastecer</span>
+            <span class="ops__title">{{ 'dashboard.ops-status.low-inventory' | translate }}</span>
+            <span class="ops__value">{{ 'dashboard.ops-status.low-inventory-hint' | translate }}</span>
           </div>
         </li>
       </ul>
@@ -88,24 +88,24 @@
 
     <div class="panel">
       <div class="panel__header">
-        <h2>Accesos rápidos</h2>
+        <h2>{{ 'dashboard.quick-access' | translate }}</h2>
       </div>
       <div class="actions">
         <a routerLink="/admin/inventory" class="actions__item">
           <app-icon name="box"></app-icon>
-          <span>Gestionar inventario</span>
+          <span>{{ 'dashboard.actions.manage-inventory' | translate }}</span>
         </a>
-        <a routerLink="/admin/pedidos" class="actions__item">
+        <a routerLink="/admin/orders" class="actions__item">
           <app-icon name="package"></app-icon>
-          <span>Ver pedidos</span>
+          <span>{{ 'dashboard.actions.view-orders' | translate }}</span>
         </a>
         <a routerLink="/admin/logistics" class="actions__item">
           <app-icon name="truck"></app-icon>
-          <span>Optimizar rutas</span>
+          <span>{{ 'dashboard.actions.optimize-routes' | translate }}</span>
         </a>
         <a routerLink="/notifications" class="actions__item">
           <app-icon name="bell"></app-icon>
-          <span>Notificaciones</span>
+          <span>{{ 'dashboard.actions.notifications' | translate }}</span>
         </a>
       </div>
     </div>

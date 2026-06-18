@@ -3,21 +3,21 @@
   <!-- Header -->
   <div class="logistics-header">
     <div class="header-title">
-      <h1>Logística</h1>
-      <p class="subtitle">Gestión de recojos y entregas</p>
+      <h1>{{ 'logistics.title' | translate }}</h1>
+      <p class="subtitle">{{ 'logistics.subtitle' | translate }}</p>
     </div>
     <div class="header-stats">
       <div class="stat-badge pending">
         <span class="stat-number">{{ store.pendingCount() }}</span>
-        <span class="stat-label">Pendientes</span>
+        <span class="stat-label">{{ 'logistics.pending' | translate }}</span>
       </div>
       <div class="stat-badge transit">
         <span class="stat-number">{{ store.inTransitCount() }}</span>
-        <span class="stat-label">En tránsito</span>
+        <span class="stat-label">{{ 'logistics.transit' | translate }}</span>
       </div>
       <div class="stat-badge delivered">
         <span class="stat-number">{{ store.deliveredCount() }}</span>
-        <span class="stat-label">Entregados</span>
+        <span class="stat-label">{{ 'logistics.delivered' | translate }}</span>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
         class="filter-btn"
         [class.active]="store.filter() === f.value"
         (click)="setFilter(f.value)">
-        {{ f.label }}
+        {{ f.i18nKey | translate }}
       </button>
     }
   </div>
@@ -38,7 +38,7 @@
   @if (store.loading()) {
     <div class="state-message">
       <span class="spinner"></span>
-      <p>Cargando envíos...</p>
+      <p>{{ 'logistics.loading' | translate }}</p>
     </div>
   }
 
@@ -52,7 +52,7 @@
   <!-- Empty -->
   @if (!store.loading() && !store.error() && store.filteredDeliveries().length === 0) {
     <div class="state-message empty">
-      <p>No hay envíos para este filtro.</p>
+      <p>{{ 'logistics.empty' | translate }}</p>
     </div>
   }
 
@@ -62,14 +62,14 @@
       <table class="deliveries-table">
         <thead>
         <tr>
-          <th>ID</th>
-          <th>Tipo</th>
-          <th>Pedido</th>
-          <th>Dirección</th>
-          <th>Fecha</th>
-          <th>Repartidor</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th>{{ 'logistics.id' | translate }}</th>
+          <th>{{ 'logistics.type' | translate }}</th>
+          <th>{{ 'logistics.order' | translate }}</th>
+          <th>{{ 'logistics.address' | translate }}</th>
+          <th>{{ 'logistics.date' | translate }}</th>
+          <th>{{ 'logistics.driver' | translate }}</th>
+          <th>{{ 'logistics.status' | translate }}</th>
+          <th>{{ 'logistics.actions' | translate }}</th>
         </tr>
         </thead>
         <tbody>
@@ -78,7 +78,7 @@
               <td class="id-cell">#{{ delivery.id }}</td>
               <td>
                 <span class="type-badge" [class]="delivery.type.toLowerCase()">
-                  {{ typeLabel(delivery.type) }}
+                  {{ typeLabel(delivery.type) | translate }}
                 </span>
               </td>
               <td>#{{ delivery.orderId }}</td>
@@ -87,18 +87,18 @@
               <td>{{ delivery.driverName ?? '—' }}</td>
               <td>
                 <span class="status-badge" [class]="delivery.status.toLowerCase().replace('_', '-')">
-                  {{ statusLabel(delivery.status) }}
+                  {{ statusLabel(delivery.status) | translate }}
                 </span>
               </td>
               <td class="actions-cell">
                 @if (nextStatus(delivery)) {
                   <button class="btn-advance" (click)="advance(delivery)">
-                    Avanzar
+                    {{ 'logistics.advance' | translate }}
                   </button>
                 }
                 @if (delivery.status !== 'DELIVERED' && delivery.status !== 'FAILED') {
                   <button class="btn-fail" (click)="markFailed(delivery)">
-                    Fallido
+                    {{ 'logistics.fail' | translate }}
                   </button>
                 }
               </td>

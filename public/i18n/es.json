@@ -74,13 +74,33 @@
     "filter-all": "Todos",
     "status-ok": "Normal",
     "status-low": "Stock bajo",
-    "status-critical": "Sin stock"
+    "status-critical": "Sin stock",
+    "category": {
+      "cleaning": "Limpieza",
+      "packaging": "Empaque",
+      "machinery": "Maquinaria",
+      "operations": "Operaciones"
+    }
   },
   "notifications": {
     "title": "Centro de notificaciones",
     "subtitle": "Mantente al día con tus alertas",
+    "subtitle-all-read": "Estás al día. No tienes notificaciones sin leer.",
+    "subtitle-one-unread": "Tienes 1 notificación sin leer.",
+    "subtitle-many-unread": "Tienes {{count}} notificaciones sin leer.",
+    "empty-filter": "No hay notificaciones que coincidan con el filtro seleccionado.",
+    "empty-title": "Sin notificaciones",
     "mark-all": "Marcar todas como leídas",
     "empty": "No tienes notificaciones.",
+    "loading": "Cargando notificaciones...",
+    "important": "Importante",
+    "type": {
+      "order": "Pedido",
+      "logistics": "Logística",
+      "billing": "Facturación",
+      "system": "Sistema",
+      "promo": "Promoción"
+    },
     "filter": {
       "all": "Todas",
       "unread": "No leídas",
@@ -100,5 +120,96 @@
     "loading": "Ingresando...",
     "no-account": "¿No tienes cuenta?",
     "register": "Regístrate"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Buenos días",
+      "afternoon": "Buenas tardes",
+      "evening": "Buenas noches"
+    },
+    "welcome-client": "Hola, {{name}} 👋",
+    "welcome-admin": "Bienvenido, {{name}}",
+    "subtitle-client": "Gestiona tus pedidos de lavandería desde un solo lugar. Sigue el estado de tus prendas en tiempo real.",
+    "subtitle-admin": "Resumen operativo de tu lavandería. Monitorea inventario, pedidos y logística en tiempo real.",
+    "admin-panel": "Panel de administración",
+    "kpis": {
+      "today-orders": "Pedidos hoy",
+      "today-orders-hint": "+12% vs ayer",
+      "on-time-deliveries": "Entregas a tiempo",
+      "on-time-deliveries-hint": "+2.4%",
+      "in-route": "En ruta",
+      "in-route-hint": "vehículos activos",
+      "alerts": "Alertas",
+      "alerts-hint": "sin leer",
+      "active-orders": "Pedidos activos",
+      "active-orders-hint": "en proceso",
+      "delivered-orders": "Entregados",
+      "delivered-orders-hint": "este mes",
+      "on-the-way": "En camino",
+      "on-the-way-hint": "recojo programado"
+    },
+    "ops-status": {
+      "title": "Estado de operaciones",
+      "hint": "Tiempo real",
+      "washing": "Lavado en curso",
+      "washing-hint": "12 cargas activas",
+      "pickup": "Pendientes de recojo",
+      "pickup-hint": "5 direcciones programadas",
+      "delays": "Retrasos",
+      "delays-hint": "1 pedido fuera de tiempo objetivo",
+      "low-inventory": "Inventario bajo",
+      "low-inventory-hint": "2 insumos por reabastecer"
+    },
+    "quick-access": "Accesos rápidos",
+    "actions": {
+      "manage-inventory": "Gestionar inventario",
+      "view-orders": "Ver pedidos",
+      "optimize-routes": "Optimizar rutas",
+      "notifications": "Notificaciones",
+      "new-order": "Nuevo pedido",
+      "schedule-pickup": "Programar recojo",
+      "view-notifications": "Ver notificaciones",
+      "support": "Soporte"
+    }
+  },
+  "logistics": {
+    "title": "Logística",
+    "subtitle": "Gestión de recojos y entregas",
+    "pending": "Pendientes",
+    "transit": "En tránsito",
+    "delivered": "Entregados",
+    "loading": "Cargando envíos...",
+    "empty": "No hay envíos para este filtro.",
+    "id": "ID",
+    "type": "Tipo",
+    "order": "Pedido",
+    "address": "Dirección",
+    "date": "Fecha",
+    "driver": "Repartidor",
+    "status": "Estado",
+    "actions": "Acciones",
+    "advance": "Avanzar",
+    "fail": "Fallido",
+    "type-label": {
+      "pickup": "Recojo",
+      "delivery": "Entrega"
+    },
+    "status-label": {
+      "pending": "Pendiente",
+      "assigned": "Asignado",
+      "picked-up": "Recogido",
+      "in-transit": "En tránsito",
+      "delivered": "Entregado",
+      "failed": "Fallido"
+    },
+    "filter": {
+      "all": "Todos",
+      "pending": "Pendientes",
+      "assigned": "Asignados",
+      "picked-up": "Recogidos",
+      "in-transit": "En tránsito",
+      "delivered": "Entregados",
+      "failed": "Fallidos"
+    }
   }
 }
