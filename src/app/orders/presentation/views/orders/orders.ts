@@ -4,7 +4,7 @@ import { OrdersStore, OrderFilter } from '../../../application/orders.store';
 import { Order, OrderStatus } from '../../../domain/model/order.entity';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UsersStore } from '../../../users/application/users.store';
+import { UsersStore } from '../../../../users/application/users.store';
 
 @Component({
   selector: 'app-orders',

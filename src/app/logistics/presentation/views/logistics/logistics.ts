@@ -4,7 +4,7 @@ import { LogisticsStore, DeliveryFilter } from '../../../application/logistics.s
 import { Delivery, DeliveryStatus } from '../../../domain/model/delivery.entity';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UsersStore } from '../../../users/application/users.store';
+import { UsersStore } from '../../../../users/application/users.store';
 
 @Component({
   selector: 'app-logistics',
