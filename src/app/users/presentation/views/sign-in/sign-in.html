@@ -1,6 +1,14 @@
 <div class="login-container">
   <h2>Bienvenido a CleanWave</h2>
 
+  <div class="test-credentials" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.9em; color: #555; border: 1px solid #ddd;">
+    <p style="margin: 0 0 5px;"><strong>Credenciales de prueba:</strong></p>
+    <ul style="margin: 0; padding-left: 20px;">
+      <li><strong>Admin:</strong> carlos@cleanwave.com / 123456</li>
+      <li><strong>Usuario:</strong> andrea@ejemplo.com / 123456</li>
+    </ul>
+  </div>
+
   <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="email">Correo Electrónico:</label>
